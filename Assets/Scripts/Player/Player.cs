@@ -24,7 +24,8 @@ namespace Player {
             rb = GetComponent<Rigidbody2D>();
             playerMovement = GetComponent<PlayerMovement>();
             anim = GetComponent<Animator>();
-            isAttacking = false;
+            // For whatever reason the player will start with an attack
+            // isAttacking = false;
         }
         
         public void OnAttack(InputAction.CallbackContext context) {
