@@ -10,7 +10,8 @@ namespace Player {
         private Animator anim;
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
-        
+
+        public int health;
         public bool canMove = true;
         public bool isAttacking;
 
