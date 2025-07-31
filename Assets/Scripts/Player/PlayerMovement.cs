@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,19 +12,26 @@ namespace Player {
         
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] public Vector2 moveInput;
-        [Header("Components")]
-        [SerializeField] private Rigidbody2D rb;
-        [SerializeField] private Animator anim;
-        [SerializeField] private BoxCollider2D boxCollider2D;
-        // [SerializeField] private CircleCollider2D circleCollider2D;
+        
+        private Rigidbody2D rb;
+        private Animator anim;
+        private BoxCollider2D boxCollider2D;
+        private PlayerInput playerInput;
+        
         private Vector2 lastDirection;
-        [SerializeField] private PlayerInput playerInput;
         private InputAction moveAction;
         
         private void Awake() {
+            playerInput = GetComponent<PlayerInput>();
             moveAction = playerInput.actions["Move"]; // or whatever your action is named
         }
-        
+
+        private void Start() {
+            rb = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
+            boxCollider2D = GetComponent<BoxCollider2D>();
+        }
+
         private void FixedUpdate() {
             if (Player.instance.canMove) {
                 rb.linearVelocity = moveInput * moveSpeed;

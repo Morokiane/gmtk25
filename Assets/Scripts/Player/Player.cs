@@ -7,8 +7,7 @@ namespace Player {
         private static readonly int IsWalking = Animator.StringToHash("isWalking");
         public static Player instance;
 
-        [SerializeField] private Animator anim;
-        
+        private Animator anim;
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
         
@@ -24,6 +23,7 @@ namespace Player {
 
             rb = GetComponent<Rigidbody2D>();
             playerMovement = GetComponent<PlayerMovement>();
+            anim = GetComponent<Animator>();
             isAttacking = false;
         }
         
