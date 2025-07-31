@@ -24,7 +24,7 @@ namespace Player {
             rb = GetComponent<Rigidbody2D>();
             playerMovement = GetComponent<PlayerMovement>();
             anim = GetComponent<Animator>();
-            // For whatever reason the player will start with an attack
+            
             // isAttacking = false;
         }
         
