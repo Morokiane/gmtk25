@@ -13,6 +13,7 @@ namespace Controllers {
 		private uint loopLevel; // Each completed loop increases the level
 		
 		private void Start() {
+
 			if (instance == null) {
 				instance = this;
 			} else {
@@ -26,16 +27,19 @@ namespace Controllers {
 			StartCoroutine(FadeOut());
 		}
 
+		// This really should be called fade out fucked that up
 		private IEnumerator FadeIn() {
 			yield return new WaitForSecondsRealtime(1f);
+			Player.Player.instance.canMove = false;
 			rooms[currentRoom].SetActive(false);
 			currentRoom++;
 			Instantiate(rooms[1], transform.position, Quaternion.identity);
 		}
 
 		private IEnumerator FadeOut() {
-			yield return new WaitForSeconds(3f);
+			yield return new WaitForSeconds(2f);
 			HUDController.instance.FadeOut();
+			Player.Player.instance.canMove = true;
 		}
 	}
 }

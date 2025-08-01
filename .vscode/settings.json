@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "boulanger.sln",
+    "dotnet.defaultSolution": "gmtk25.sln",
     "dotnet.preferCSharpExtension": true,
     "editor.tabCompletion": "on"
 }

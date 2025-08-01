@@ -1315,8 +1315,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1563736612}
-  - component: {fileID: 1563736611}
   - component: {fileID: 1563736610}
+  - component: {fileID: 1563736611}
   - component: {fileID: 1563736613}
   m_Layer: 0
   m_Name: MasterRoom
@@ -1337,10 +1337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5114e6c4c9e4a3e8560734c4cdced39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goal: 0
   exits:
   - {fileID: 1370121494}
   - {fileID: 408859310}
-  roomLocation: 0
 --- !u!212 &1563736611
 SpriteRenderer:
   m_ObjectHideFlags: 0
