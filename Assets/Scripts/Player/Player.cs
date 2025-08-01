@@ -14,7 +14,7 @@ namespace Player {
         public int health;
         public bool canMove = true;
         public bool isAttacking;
-        public bool canExit;
+        // public bool canExit;
 
         private void Start() {
             if (instance == null) {
@@ -25,9 +25,7 @@ namespace Player {
 
             rb = GetComponent<Rigidbody2D>();
             playerMovement = GetComponent<PlayerMovement>();
-            anim = GetComponent<Animator>();
-            
-            // isAttacking = false;
+            anim = GetComponent<Animator>();   
         }
         
         public void OnAttack(InputAction.CallbackContext context) {
@@ -43,10 +41,10 @@ namespace Player {
                 
         public void OnInteract(InputAction.CallbackContext context) {
             // context.started gets only when the key is pressed
-            if (context.started && canExit) {
+            /* if (context.started && canExit) {
                 Debug.Log("loading level");
                 Controllers.LevelController.instance.ChangeRoom();
-            }
+            } */
         }
 
         public void ResetAttack() {

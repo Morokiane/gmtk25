@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,7 +10,8 @@ namespace Controllers {
 		[SerializeField] private GameObject[] rooms;
 		
 		private uint loopLevel; // Each completed loop increases the level
-		
+		private GameObject currentRoomInstance;
+
 		private void Start() {
 
 			if (instance == null) {
@@ -19,6 +19,8 @@ namespace Controllers {
 			} else {
 				Destroy(gameObject);
 			}
+
+			currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
 		}
 
 		public void ChangeRoom() {
@@ -27,13 +29,16 @@ namespace Controllers {
 			StartCoroutine(FadeOut());
 		}
 
-		// This really should be called fade out fucked that up
+		// This really should be called fade out...fucked that up
 		private IEnumerator FadeIn() {
 			yield return new WaitForSecondsRealtime(1f);
 			Player.Player.instance.canMove = false;
-			rooms[currentRoom].SetActive(false);
+			
+			Destroy(currentRoomInstance);
+
 			currentRoom++;
-			Instantiate(rooms[1], transform.position, Quaternion.identity);
+			// This will become a random number based on the number of rooms I have available to spawn
+			currentRoomInstance = Instantiate(rooms[1], transform.position, Quaternion.identity);
 		}
 
 		private IEnumerator FadeOut() {

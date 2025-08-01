@@ -17,13 +17,18 @@ namespace Controllers {
         }
 
         private uint currentExit;
-        private Animator anim;
-        private SpriteRenderer spriteRenderer;
+        private Animator[] anim;
+        private SpriteRenderer[] spriteRenderer;
 
         private void Start() {
             // Debug.Log(LevelController.instance.currentRoom);
-            anim = exits[0].GetComponent<Animator>();
-            spriteRenderer = exits[0].GetComponent<SpriteRenderer>();
+            anim = new Animator[exits.Length];
+            spriteRenderer = new SpriteRenderer[exits.Length];
+
+            for (int i = 0; i < exits.Length; i++) {
+                spriteRenderer[i] = exits[i].GetComponent<SpriteRenderer>();
+                anim[i] = exits[i].GetComponent<Animator>();
+            }
 
             if (LevelController.instance.currentRoom != 0) {
                 ConfigureExit();
@@ -37,10 +42,39 @@ namespace Controllers {
             // Exits are 0 N, 1 E, 2 S, 3 W
             switch (LevelController.instance.currentRoom) {
                 case 1:
-                    // exits[0].SetActive(true);
-                    spriteRenderer.enabled = true;
-                    currentExit = 0;
+                    spriteRenderer[0].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(-5.46f, 0f);
+                    Debug.Log("Current room is 1");
+                    break;
+                case 2:
+                    spriteRenderer[0].enabled = true;
+                    Player.Player.instance.transform.position = new Vector2(0f, -2.79f);
+                    Debug.Log("Current room is 2");
+                    break;
+                case 3:
+                    spriteRenderer[3].enabled = true;
+                    Player.Player.instance.transform.position = new Vector2(0f, -2.79f);
+                    Debug.Log("Current room is 3");
+                    break;
+                case 4:
+                    spriteRenderer[3].enabled = true;
+                    Player.Player.instance.transform.position = new Vector2(5.45f, 0f);
+                    Debug.Log("Current room is 4");
+                    break;
+                case 5:
+                    spriteRenderer[2].enabled = true;
+                    Player.Player.instance.transform.position = new Vector2(5.45f, 0f);
+                    Debug.Log("Current room is 5");
+                    break;
+                case 6:
+                    spriteRenderer[2].enabled = true;
+                    Player.Player.instance.transform.position = new Vector2(0f, 2.59f);
+                    Debug.Log("Current room is 6");
+                    break;
+                case 7:
+                    spriteRenderer[1].enabled = true;
+                    Player.Player.instance.transform.position = new Vector2(0f, 2.59f);
+                    Debug.Log("Current room is 7");
                     break;
             }
         }
@@ -64,8 +98,28 @@ namespace Controllers {
         }
 
         private void Test() {
-            if (currentExit == 0) {
-                anim.Play("DungeonDoorTop");
+            switch (LevelController.instance.currentRoom) {
+                case 1:
+                    anim[0].Play("DungeonDoorTop");
+                    break;
+                case 2:
+                    anim[0].Play("DungeonDoorTop");
+                    break;
+                case 3:
+                    anim[3].Play("DungeonDoorWest");
+                    break;
+                case 4:
+                    anim[3].Play("DungeonDoorWest");
+                    break;
+                case 5:
+                    anim[2].Play("DungeonDoorSouth");
+                    break;
+                case 6:
+                    anim[2].Play("DungeonDoorSouth");
+                    break;
+                case 7:
+                    anim[1].Play("DungeonDoorEast");
+                    break;
             }
         }
     }
