@@ -14,6 +14,7 @@ namespace Player {
         public int health;
         public bool canMove = true;
         public bool isAttacking;
+        public bool canExit;
 
         private void Start() {
             if (instance == null) {
@@ -37,6 +38,14 @@ namespace Player {
                 playerMovement.moveInput = Vector2.zero;
                 anim.SetBool(IsWalking, false);
                 anim.SetTrigger(AttackTrigger);
+            }
+        }
+                
+        public void OnInteract(InputAction.CallbackContext context) {
+            // context.started gets only when the key is pressed
+            if (context.started && canExit) {
+                Debug.Log("loading level");
+                Controllers.LevelController.instance.ChangeRoom();
             }
         }
 

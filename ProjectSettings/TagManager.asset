@@ -53,5 +53,8 @@ TagManager:
   - name: Collectable
     uniqueID: 827019039
     locked: 0
+  - name: Foreground
+    uniqueID: 1421361353
+    locked: 0
   m_RenderingLayers:
   - Default
