@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemies {
     public class Spikes : MonoBehaviour {
@@ -12,6 +13,7 @@ namespace Enemies {
         private void Start() {
             boxCollider = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
+
             StartCoroutine(ActivateSpikes());
         }
 
@@ -26,13 +28,16 @@ namespace Enemies {
         }
 
         private IEnumerator ActivateSpikes() {
-            yield return new WaitForSeconds(2);
-            anim.Play("Spikes");
-            // Controllers.HUDController.instance.ResetCamera();
-            yield return new WaitForSeconds(2);
-            anim.Play("SpikesDown");
-            // Controllers.HUDController.instance.ResetCamera();
-            StartCoroutine(ActivateSpikes());
+            // Randomize start delay
+            float initialDelay = Random.Range(0f, 2f); // You can increase range
+            yield return new WaitForSeconds(initialDelay);
+
+            while (true) {
+                anim.Play("Spikes");
+                yield return new WaitForSeconds(2f);
+                anim.Play("SpikesDown");
+                yield return new WaitForSeconds(2f);
+            }
         }
     }
 }

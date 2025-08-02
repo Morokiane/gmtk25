@@ -14,6 +14,9 @@ namespace Controllers {
 
         public int coins;
         public uint playerDamage;
+        public int amountOfEnemies;
+        
+        private int lastRoomIndex = -1; // Declare this somewhere in your class
 
 		private void Start() {
 			if (instance == null) {
@@ -34,15 +37,24 @@ namespace Controllers {
 		}
 
 		// This really should be called fade out...fucked that up
-		private IEnumerator FadeIn() {
-			yield return new WaitForSecondsRealtime(1f);
-			Player.Player.instance.canMove = false;
+        private IEnumerator FadeIn() {
+            yield return new WaitForSecondsRealtime(1f);
+            Player.Player.instance.canMove = false;
 
-			Destroy(currentRoomInstance);
+            Destroy(currentRoomInstance);
 
-			currentRoom++;
-			currentRoomInstance = Instantiate(rooms[1], transform.position, Quaternion.identity);
-		}
+            currentRoom++;
+
+            // Pick a room that’s not the same as last time
+            int roomToSpawn;
+            do {
+                roomToSpawn = Random.Range(1, rooms.Length);
+            } while (roomToSpawn == lastRoomIndex && rooms.Length > 2);
+
+            lastRoomIndex = roomToSpawn;
+
+            currentRoomInstance = Instantiate(rooms[roomToSpawn], transform.position, Quaternion.identity);
+        }
 
 		private IEnumerator FadeOut() {
 			yield return new WaitForSeconds(2f);

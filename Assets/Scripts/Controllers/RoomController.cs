@@ -32,52 +32,43 @@ namespace Controllers {
 
             if (LevelController.instance.currentRoom != 0) {
                 ConfigureExit();
-                ConfigureGoal();
+                // ConfigureGoal();
                 ConfigureChest();
             }
         }
 
         private void ConfigureExit() {
-            // Debug.Log("Current room number: " + LevelController.instance.currentRoom);
-
             // Exits are 0 N, 1 E, 2 S, 3 W
             switch (LevelController.instance.currentRoom) {
                 case 1:
                     spriteRenderer[0].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(-5.46f, 0f);
-                    // Debug.Log("Current room is 1");
                     break;
                 case 2:
                     spriteRenderer[0].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, -2.79f);
-                    // Debug.Log("Current room is 2");
                     break;
                 case 3:
                     spriteRenderer[3].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, -2.79f);
-                    // Debug.Log("Current room is 3");
                     break;
                 case 4:
                     spriteRenderer[3].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(5.45f, 0f);
-                    // Debug.Log("Current room is 4");
                     break;
                 case 5:
                     spriteRenderer[2].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(5.45f, 0f);
-                    // Debug.Log("Current room is 5");
                     break;
                 case 6:
                     spriteRenderer[2].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, 2.59f);
-                    // Debug.Log("Current room is 6");
                     break;
                 case 7:
                     spriteRenderer[1].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, 2.59f);
-                    // Debug.Log("Current room is 7");
                     break;
-                case 8:
+                case 8: // This reloads the master room
                     Player.Player.instance.transform.position = new Vector2(0f, 0f);
                     Destroy(LevelController.instance.currentRoomInstance);
                     LevelController.instance.currentRoomInstance = Instantiate(LevelController.instance.rooms[0], transform.position, Quaternion.identity);
@@ -87,23 +78,26 @@ namespace Controllers {
         }
 
         private void ConfigureGoal() {
+            // goal = (Goal)Random.Range(0, System.Enum.GetValues(typeof(Goal)).Length);
+            
             switch (goal) {
                 case Goal.KillAll:
-                    // Debug.Log("Kill all enemies");
+                    Debug.Log("Kill all enemies");
                     break;
                 case Goal.Key:
-                    // Debug.Log("Find the key");
+                    Debug.Log("Find the key");
                     break;
                 case Goal.Switch:
-                    // Debug.Log("Find the switch");
+                    Debug.Log("Find the switch");
                     break;
                 case Goal.Test:
-                    // Debug.Log("Just opens the door");
-                    Test();
+                    Debug.Log("Just opens the door");
+                    OpenDoor();
                     break;
             }
         }
 
+        //Randomly decide and pick a place to spawn a chest in a room
         private void ConfigureChest() {
             int amountToSpawn = Random.Range(0, 2);
 
@@ -114,7 +108,7 @@ namespace Controllers {
             }
         }
 
-        private void Test() {
+        private void OpenDoor() {
             switch (LevelController.instance.currentRoom) {
                 case 1:
                     anim[0].Play("DungeonDoorTop");

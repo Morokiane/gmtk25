@@ -15,7 +15,8 @@ namespace Player {
         public bool canMove = true;
         public bool isAttacking;
         public bool canLoot;
-        public bool takeDamage { get; private set; }
+        public bool takeDamage;
+        public bool canInteract;
         
         private Animator anim;
         private PlayerMovement playerMovement;
@@ -70,7 +71,11 @@ namespace Player {
             // context.started gets only when the key is pressed
              if (context.started && canLoot) {
                 Utils.Chest.instance.OpenChest();
-             } 
+             }
+
+             if (context.started && canInteract) {
+                 Utils.Switch.instance.FlipSwitch();
+             }
         }
 
         public void ResetAttack() {
