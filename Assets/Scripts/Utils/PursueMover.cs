@@ -14,8 +14,18 @@ namespace Utils {
         private bool isPursuing;
         private float delayTimer;
         private Vector2 offScreenPosition;
+        
+        private bool isKnockedBack;
+        private float knockbackTimer;
+        
+        [Header("Knockback Settings")]
+        [SerializeField] private float knockbackDuration = 0.2f;
+        [SerializeField] private float knockbackForce = 5f;
+
+        private Rigidbody2D rb;
 
         private void Start() {
+            rb = GetComponent<Rigidbody2D>();
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, initialRotation)); // ok if you want a fixed starting rotation
             rotationSpeed *= 100;
 
@@ -27,6 +37,15 @@ namespace Utils {
         }
 
         private void FixedUpdate() {
+            if (isKnockedBack) {
+                knockbackTimer -= Time.deltaTime;
+                if (knockbackTimer <= 0f) {
+                    isKnockedBack = false;
+                    rb.linearVelocity = Vector2.zero;
+                }
+                return; // Skip normal movement during knockback
+            }
+            
             if (!Player.Player.instance.takeDamage && isPursuing) {
                 isPursuing = false;
                 LostPlayer();
@@ -89,6 +108,14 @@ namespace Utils {
             } else if (gameObject.transform.position.x < -13 && !destroyObject) {
                 gameObject.SetActive(false);
             }
+        }
+        
+        public void ApplyKnockback(Vector2 sourcePosition) {
+            isKnockedBack = true;
+            knockbackTimer = knockbackDuration;
+
+            Vector2 direction = (transform.position - (Vector3)sourcePosition).normalized;
+            rb.linearVelocity = direction * knockbackForce;
         }
     }
 }

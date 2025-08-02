@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Damage
+  - Enemy
+  - Collectible
   layers:
   - Default
   - TransparentFX
@@ -13,10 +15,10 @@ TagManager:
   - Water
   - UI
   - Player
-  - Enemie
+  - Enemy
   - Collectable
-  - 
-  - 
+  - Damage
+  - Hitbox
   - 
   - 
   - 
@@ -45,14 +47,14 @@ TagManager:
   - name: Background
     uniqueID: 876177843
     locked: 0
-  - name: Player
-    uniqueID: 1798065585
+  - name: Collectable
+    uniqueID: 827019039
     locked: 0
   - name: Enemy
     uniqueID: 1544025381
     locked: 0
-  - name: Collectable
-    uniqueID: 827019039
+  - name: Player
+    uniqueID: 1798065585
     locked: 0
   - name: Foreground
     uniqueID: 1421361353

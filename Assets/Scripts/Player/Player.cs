@@ -1,3 +1,5 @@
+using System;
+using Controllers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -10,8 +12,7 @@ namespace Player {
 
         [SerializeField] private GameObject hitbox;
 
-        private int maxHealth;
-        
+        public int maxHealth;
         public int health;
         public bool canMove = true;
         public bool isAttacking;
@@ -36,7 +37,7 @@ namespace Player {
             maxHealth = 6;
             health = maxHealth;
             
-            Controllers.HUDController.instance.UpdateHUD(health);
+            HUDController.instance.UpdateHUD(health);
         }
 
         private void Damage() {
