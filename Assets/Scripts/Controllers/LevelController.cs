@@ -7,10 +7,10 @@ namespace Controllers {
 		[SerializeField] private uint coinsCollected;
 		public int currentRoom = 0;
 		[Header("Available rooms to load")]
-		[SerializeField] private GameObject[] rooms;
+		public GameObject[] rooms;
 		
 		private uint loopLevel; // Each completed loop increases the level
-		private GameObject currentRoomInstance;
+		public GameObject currentRoomInstance;
 
 		private void Start() {
 
@@ -37,12 +37,7 @@ namespace Controllers {
 			Destroy(currentRoomInstance);
 
 			currentRoom++;
-			if (currentRoom == 0) {
-				currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
-			} else {
-				// This will become a random number based on the number of rooms I have available to spawn
-				currentRoomInstance = Instantiate(rooms[1], transform.position, Quaternion.identity);
-			}
+			currentRoomInstance = Instantiate(rooms[1], transform.position, Quaternion.identity);
 		}
 
 		private IEnumerator FadeOut() {

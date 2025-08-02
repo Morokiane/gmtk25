@@ -71,13 +71,13 @@ namespace Controllers {
                 case 7:
                     spriteRenderer[1].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, 2.59f);
-                    LevelController.instance.currentRoom = -1;
                     // Debug.Log("Current room is 7");
                     break;
                 case 8:
                     Player.Player.instance.transform.position = new Vector2(0f, 0f);
-                    // LevelController.instance.currentRoom = 0;
-                    Debug.Log("jdfkdla;j");
+                    Destroy(LevelController.instance.currentRoomInstance);
+                    LevelController.instance.currentRoomInstance = Instantiate(LevelController.instance.rooms[0], transform.position, Quaternion.identity);
+                    LevelController.instance.currentRoom = 0;
                     break;
             }
         }
