@@ -5,7 +5,7 @@ namespace Controllers {
 	public class LevelController : MonoBehaviour {
 		public static LevelController instance;
 		[SerializeField] private uint coinsCollected;
-		public uint currentRoom = 0;
+		public int currentRoom = 0;
 		[Header("Available rooms to load")]
 		[SerializeField] private GameObject[] rooms;
 		
@@ -33,12 +33,16 @@ namespace Controllers {
 		private IEnumerator FadeIn() {
 			yield return new WaitForSecondsRealtime(1f);
 			Player.Player.instance.canMove = false;
-			
+
 			Destroy(currentRoomInstance);
 
 			currentRoom++;
-			// This will become a random number based on the number of rooms I have available to spawn
-			currentRoomInstance = Instantiate(rooms[1], transform.position, Quaternion.identity);
+			if (currentRoom == 0) {
+				currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
+			} else {
+				// This will become a random number based on the number of rooms I have available to spawn
+				currentRoomInstance = Instantiate(rooms[1], transform.position, Quaternion.identity);
+			}
 		}
 
 		private IEnumerator FadeOut() {

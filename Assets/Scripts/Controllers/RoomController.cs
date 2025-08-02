@@ -1,6 +1,3 @@
-using System;
-using NUnit.Framework.Constraints;
-using NUnit.Framework.Internal;
 using UnityEngine;
 
 namespace Controllers {
@@ -21,7 +18,7 @@ namespace Controllers {
         private SpriteRenderer[] spriteRenderer;
 
         private void Start() {
-            // Debug.Log(LevelController.instance.currentRoom);
+            Debug.Log(LevelController.instance.currentRoom);
             anim = new Animator[exits.Length];
             spriteRenderer = new SpriteRenderer[exits.Length];
 
@@ -37,44 +34,50 @@ namespace Controllers {
         }
 
         private void ConfigureExit() {
-            Debug.Log("Current room number: " + LevelController.instance.currentRoom);
+            // Debug.Log("Current room number: " + LevelController.instance.currentRoom);
 
             // Exits are 0 N, 1 E, 2 S, 3 W
             switch (LevelController.instance.currentRoom) {
                 case 1:
                     spriteRenderer[0].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(-5.46f, 0f);
-                    Debug.Log("Current room is 1");
+                    // Debug.Log("Current room is 1");
                     break;
                 case 2:
                     spriteRenderer[0].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, -2.79f);
-                    Debug.Log("Current room is 2");
+                    // Debug.Log("Current room is 2");
                     break;
                 case 3:
                     spriteRenderer[3].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, -2.79f);
-                    Debug.Log("Current room is 3");
+                    // Debug.Log("Current room is 3");
                     break;
                 case 4:
                     spriteRenderer[3].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(5.45f, 0f);
-                    Debug.Log("Current room is 4");
+                    // Debug.Log("Current room is 4");
                     break;
                 case 5:
                     spriteRenderer[2].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(5.45f, 0f);
-                    Debug.Log("Current room is 5");
+                    // Debug.Log("Current room is 5");
                     break;
                 case 6:
                     spriteRenderer[2].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, 2.59f);
-                    Debug.Log("Current room is 6");
+                    // Debug.Log("Current room is 6");
                     break;
                 case 7:
                     spriteRenderer[1].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(0f, 2.59f);
-                    Debug.Log("Current room is 7");
+                    LevelController.instance.currentRoom = -1;
+                    // Debug.Log("Current room is 7");
+                    break;
+                case 8:
+                    Player.Player.instance.transform.position = new Vector2(0f, 0f);
+                    // LevelController.instance.currentRoom = 0;
+                    Debug.Log("jdfkdla;j");
                     break;
             }
         }
@@ -82,16 +85,16 @@ namespace Controllers {
         private void ConfigureGoal() {
             switch (goal) {
                 case Goal.KillAll:
-                    Debug.Log("Kill all enemies");
+                    // Debug.Log("Kill all enemies");
                     break;
                 case Goal.Key:
-                    Debug.Log("Find the key");
+                    // Debug.Log("Find the key");
                     break;
                 case Goal.Switch:
-                    Debug.Log("Find the switch");
+                    // Debug.Log("Find the switch");
                     break;
                 case Goal.Test:
-                    Debug.Log("Just opens the door");
+                    // Debug.Log("Just opens the door");
                     Test();
                     break;
             }

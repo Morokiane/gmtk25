@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5710103430760411063}
-  - component: {fileID: 7773146806228447010}
   - component: {fileID: 5841124029200035587}
+  - component: {fileID: 7773146806228447010}
   - component: {fileID: 6384252434304756932}
   - component: {fileID: 4891161261515568127}
   m_Layer: 0
@@ -36,6 +36,18 @@ Transform:
   - {fileID: 613788668401762310}
   m_Father: {fileID: 957329921285699851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &5841124029200035587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350797225040323763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8e14ad27f14a1c8333055ba481e4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &7773146806228447010
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -79,7 +91,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1421361353
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 16347591eed85a440a6da4354d036936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -91,18 +103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5841124029200035587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350797225040323763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a8e14ad27f14a1c8333055ba481e4d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &6384252434304756932
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -610,8 +610,6 @@ GameObject:
   m_Component:
   - component: {fileID: 613788668401762310}
   - component: {fileID: 737231363053867438}
-  - component: {fileID: 7232479643652111895}
-  - component: {fileID: 8550362873977980385}
   m_Layer: 0
   m_Name: LightEast
   m_TagString: Untagged
@@ -689,55 +687,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &7232479643652111895
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3819218145237274482}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.61953753}
-  m_Size: {x: 2.0181575, y: 0.77908266}
-  m_Direction: 1
---- !u!114 &8550362873977980385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3819218145237274482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a8e14ad27f14a1c8333055ba481e4d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3844209924231691071
 GameObject:
   m_ObjectHideFlags: 0
