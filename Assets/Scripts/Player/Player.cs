@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Player {
     public class Player : MonoBehaviour {
@@ -7,14 +8,19 @@ namespace Player {
         private static readonly int IsWalking = Animator.StringToHash("isWalking");
         public static Player instance;
 
-        private Animator anim;
-        private PlayerMovement playerMovement;
-        private Rigidbody2D rb;
+        [SerializeField] private GameObject hitbox;
 
+        private int maxHealth;
+        
         public int health;
         public bool canMove = true;
         public bool isAttacking;
-        // public bool canExit;
+        public bool canLoot;
+        public bool takeDamage { get; private set; }
+        
+        private Animator anim;
+        private PlayerMovement playerMovement;
+        private Rigidbody2D rb;
 
         private void Start() {
             if (instance == null) {
@@ -25,7 +31,20 @@ namespace Player {
 
             rb = GetComponent<Rigidbody2D>();
             playerMovement = GetComponent<PlayerMovement>();
-            anim = GetComponent<Animator>();   
+            anim = GetComponent<Animator>();
+
+            maxHealth = 6;
+            health = maxHealth;
+            
+            Controllers.HUDController.instance.UpdateHUD(health);
+        }
+
+        private void Damage() {
+            hitbox.SetActive(true);
+        }
+
+        public void TakeDamage() {
+            
         }
         
         public void OnAttack(InputAction.CallbackContext context) {
@@ -36,21 +55,22 @@ namespace Player {
                 playerMovement.moveInput = Vector2.zero;
                 anim.SetBool(IsWalking, false);
                 anim.SetTrigger(AttackTrigger);
+                Damage();
             }
         }
                 
         public void OnInteract(InputAction.CallbackContext context) {
             // context.started gets only when the key is pressed
-            /* if (context.started && canExit) {
-                Debug.Log("loading level");
-                Controllers.LevelController.instance.ChangeRoom();
-            } */
+             if (context.started && canLoot) {
+                Utils.Chest.instance.OpenChest();
+             } 
         }
 
         public void ResetAttack() {
             canMove = true;
             isAttacking = false;
             anim.SetBool(AttackTrigger, false);
+            hitbox.SetActive(false);
         }
     }
 }

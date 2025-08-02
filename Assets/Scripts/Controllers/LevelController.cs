@@ -5,20 +5,24 @@ namespace Controllers {
 	public class LevelController : MonoBehaviour {
 		public static LevelController instance;
 		[SerializeField] private uint coinsCollected;
-		public int currentRoom = 0;
+		public int currentRoom;
 		[Header("Available rooms to load")]
 		public GameObject[] rooms;
 		
 		private uint loopLevel; // Each completed loop increases the level
 		public GameObject currentRoomInstance;
 
-		private void Start() {
+        public int coins;
+        public uint playerDamage;
 
+		private void Start() {
 			if (instance == null) {
 				instance = this;
 			} else {
 				Destroy(gameObject);
 			}
+            
+            playerDamage = 1;
 
 			currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
 		}

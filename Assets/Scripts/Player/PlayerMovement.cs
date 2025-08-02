@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +11,8 @@ namespace Player {
         
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] public Vector2 moveInput;
+        [SerializeField] private Transform frontMarker;
+        [SerializeField] private float frontDistance = 0.5f;
         
         private Rigidbody2D rb;
         private Animator anim;
@@ -23,7 +24,7 @@ namespace Player {
         
         private void Awake() {
             playerInput = GetComponent<PlayerInput>();
-            moveAction = playerInput.actions["Move"]; // or whatever your action is named
+            moveAction = playerInput.actions["Move"];
         }
 
         private void Start() {
@@ -43,7 +44,7 @@ namespace Player {
         private void Update() {
             if (Player.instance.canMove && !Player.instance.isAttacking) {
                 Vector2 input = moveAction.ReadValue<Vector2>();
-        
+
                 if (input != moveInput) {
                     moveInput = input;
                     anim.SetFloat(InputX, input.x);
@@ -58,6 +59,10 @@ namespace Player {
                         anim.SetFloat(LastInputY, lastDirection.y);
                     }
                 }
+            }
+
+            if (frontMarker != null) {
+                frontMarker.localPosition = lastDirection * frontDistance;
             }
         }
         

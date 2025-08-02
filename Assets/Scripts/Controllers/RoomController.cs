@@ -4,7 +4,9 @@ namespace Controllers {
     public class RoomController : MonoBehaviour {
 
         public Goal goal;
+        [SerializeField] private GameObject chest;
         [SerializeField] private GameObject[] exits;
+        [SerializeField] private Vector2[] chestPositions;
 
         public enum Goal : byte {
             KillAll,
@@ -30,6 +32,7 @@ namespace Controllers {
             if (LevelController.instance.currentRoom != 0) {
                 ConfigureExit();
                 ConfigureGoal();
+                ConfigureChest();
             }
         }
 
@@ -97,6 +100,16 @@ namespace Controllers {
                     // Debug.Log("Just opens the door");
                     Test();
                     break;
+            }
+        }
+
+        private void ConfigureChest() {
+            int amountToSpawn = Random.Range(0, 2);
+
+            while (amountToSpawn > 0) {
+                Vector2 randomPos = chestPositions[Random.Range(0, chestPositions.Length)];
+                amountToSpawn--;
+                Instantiate(chest, randomPos, Quaternion.identity);
             }
         }
 

@@ -910,11 +910,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: 3
+  chest: {fileID: 2480667662731828400, guid: 65c6f318ed1ec46598b99c931d73c422, type: 3}
   exits:
   - {fileID: 3461763380004595618}
   - {fileID: 350797225040323763}
   - {fileID: 3844209924231691071}
   - {fileID: 3451312694516728713}
+  chestPositions:
+  - {x: -3, y: 1}
+  - {x: 4, y: 2}
+  - {x: 3, y: 2}
+  - {x: -3, y: -1}
 --- !u!212 &8276356517170984790
 SpriteRenderer:
   m_ObjectHideFlags: 0
