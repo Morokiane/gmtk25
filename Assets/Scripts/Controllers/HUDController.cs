@@ -46,14 +46,19 @@ namespace Controllers {
             float elapsedTime = 0f;
 
             while (elapsedTime < _duration) {
-                float xOffset = UnityEngine.Random.Range(-1f, 1f) * _magnitude;
-                float yOffset = UnityEngine.Random.Range(-1f, 1f) * _magnitude;
+                float xOffset = Random.Range(-1f, 1f) * _magnitude;
+                float yOffset = Random.Range(-1f, 1f) * _magnitude;
 
                 mainCamera.transform.position = new Vector3(xOffset, yOffset, -1.55f);
                 elapsedTime += Time.unscaledDeltaTime;
                 yield return 0;
             }
             mainCamera.transform.position = originalPos;
+            ResetCamera();
+        }
+        
+        public void ResetCamera() {
+            mainCamera.transform.position = new Vector3(0f, 0f, -10f);
         }
 
         public void FadeOut() {
@@ -66,6 +71,10 @@ namespace Controllers {
 
         public void CalcCoins() {
             coinNum.text = LevelController.instance.coins.ToString();
+        }
+
+        public void GameOver() {
+            anim.Play("FadeIn");
         }
     }
 }

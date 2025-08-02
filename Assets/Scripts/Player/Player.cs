@@ -1,8 +1,6 @@
-using System;
 using Controllers;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Player {
     public class Player : MonoBehaviour {
@@ -43,11 +41,19 @@ namespace Player {
         private void Damage() {
             hitbox.SetActive(true);
         }
-
-        public void TakeDamage() {
-            
-        }
         
+        public void DamagePlayer(int _damage) {
+            health -= _damage;
+            HUDController.instance.UpdateHUD(health);
+            StartCoroutine(HUDController.instance.Shake(0.4f, 0.15f));
+            
+            if (health <= 0) {
+                canMove = false;
+                anim.Play("PlayerDeathDown");
+                HUDController.instance.FadeIn();
+            }
+        }
+
         public void OnAttack(InputAction.CallbackContext context) {
             if (context.performed) {
                 isAttacking = true;

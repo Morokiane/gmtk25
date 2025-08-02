@@ -16,6 +16,7 @@ namespace Controllers {
         }
 
         private uint currentExit;
+        private Transform parent;
         private Animator[] anim;
         private SpriteRenderer[] spriteRenderer;
 
@@ -109,7 +110,7 @@ namespace Controllers {
             while (amountToSpawn > 0) {
                 Vector2 randomPos = chestPositions[Random.Range(0, chestPositions.Length)];
                 amountToSpawn--;
-                Instantiate(chest, randomPos, Quaternion.identity);
+                Instantiate(chest, randomPos, Quaternion.identity, transform);
             }
         }
 

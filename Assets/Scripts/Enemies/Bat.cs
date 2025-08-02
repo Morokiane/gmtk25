@@ -37,7 +37,7 @@ namespace Enemies {
 
         private IEnumerator FlashDamage() {
             sprite.color = Color.red;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.1f);
             sprite.color = Color.white;
         }
 
@@ -46,9 +46,9 @@ namespace Enemies {
             float roll = Random.Range(0f, 100f);
 
             if (roll < dropChance) {
-                Instantiate(drops[1], transform.position, Quaternion.identity);
+                Instantiate(drops[1], transform.position, Quaternion.identity, transform.parent);
             } else {
-                Instantiate(drops[0], transform.position, Quaternion.identity);
+                Instantiate(drops[0], transform.position, Quaternion.identity, transform.parent);
             }
         }
         
