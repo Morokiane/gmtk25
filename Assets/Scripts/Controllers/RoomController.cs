@@ -7,6 +7,7 @@ namespace Controllers {
         [SerializeField] private GameObject chest;
         [SerializeField] private GameObject[] exits;
         [SerializeField] private Vector2[] chestPositions;
+        [SerializeField] private GameObject[] enemies;
 
         public enum Goal : byte {
             KillAll,
@@ -82,6 +83,7 @@ namespace Controllers {
             
             switch (goal) {
                 case Goal.KillAll:
+                    
                     Debug.Log("Kill all enemies");
                     break;
                 case Goal.Key:
