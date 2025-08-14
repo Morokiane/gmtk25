@@ -1532,12 +1532,9 @@ MonoBehaviour:
   rooms:
   - {fileID: 4494678999924004456, guid: b9dc0ca2cae8b40dfbdbc8e719dce23e, type: 3}
   - {fileID: 6407596406076987020, guid: 4a7139546df914b1caeec2b0aad78043, type: 3}
-  - {fileID: 6407596406076987020, guid: 1144da292db654f9d83a66517cb4ee97, type: 3}
-  - {fileID: 6407596406076987020, guid: 2102b673a0a2a4047ae2ffb9723a56e8, type: 3}
   currentRoomInstance: {fileID: 0}
   coins: 0
   playerDamage: 0
-  amountOfEnemies: 0
 --- !u!4 &1800332899
 Transform:
   m_ObjectHideFlags: 0

@@ -12,3 +12,6 @@
 		- This will lead to final boss and the end of the game
 	- Merchant to buy upgrades
 - Each loop will increase difficulty of rooms.
+
+### Issues
+- Chests should have spawn points depending on room configuration

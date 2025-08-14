@@ -2,13 +2,14 @@ using UnityEngine;
 
 namespace Controllers {
     public class RoomController : MonoBehaviour {
+        public static RoomController instance;
 
         public Goal goal;
         [SerializeField] private GameObject chest;
         [SerializeField] private GameObject[] exits;
         [SerializeField] private Vector2[] chestPositions;
-        [SerializeField] private GameObject[] enemies;
-
+        [SerializeField] private Utils.GoalBase goalScript;
+        
         public enum Goal : byte {
             KillAll,
             Key,
@@ -21,7 +22,10 @@ namespace Controllers {
         private Animator[] anim;
         private SpriteRenderer[] spriteRenderer;
 
+        [HideInInspector] public int numOfEnemies;
+
         private void Start() {
+            instance = this;
             Debug.Log(LevelController.instance.currentRoom);
             anim = new Animator[exits.Length];
             spriteRenderer = new SpriteRenderer[exits.Length];
@@ -75,6 +79,13 @@ namespace Controllers {
                     LevelController.instance.currentRoomInstance = Instantiate(LevelController.instance.rooms[0], transform.position, Quaternion.identity);
                     LevelController.instance.currentRoom = 0;
                     break;
+            }
+        }
+
+        // This is for the room goal of killing all enemies
+        public void RecalcEnemy() {
+            if (numOfEnemies == goalScript.numOfEnemies) {
+                Debug.Log("Door should open");
             }
         }
 

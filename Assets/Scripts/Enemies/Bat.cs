@@ -54,6 +54,7 @@ namespace Enemies {
         
         // Called from animator
         public void RemoveEnemy() {
+            Controllers.RoomController.instance.numOfEnemies++;
             Destroy(gameObject);
         }
     }
