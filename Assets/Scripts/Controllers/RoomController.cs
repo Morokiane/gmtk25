@@ -37,7 +37,7 @@ namespace Controllers {
 
             if (LevelController.instance.currentRoom != 0) {
                 ConfigureExit();
-                // ConfigureGoal();
+                ConfigureGoal();
                 ConfigureChest();
             }
         }
@@ -84,7 +84,9 @@ namespace Controllers {
 
         // This is for the room goal of killing all enemies
         public void RecalcEnemy() {
-            if (numOfEnemies == goalScript.numOfEnemies) {
+            numOfEnemies--;
+            if (numOfEnemies <= 0) {
+                OpenDoor();
                 Debug.Log("Door should open");
             }
         }
@@ -94,7 +96,7 @@ namespace Controllers {
             
             switch (goal) {
                 case Goal.KillAll:
-                    
+                    numOfEnemies = goalScript.numOfEnemies;
                     Debug.Log("Kill all enemies");
                     break;
                 case Goal.Key:
