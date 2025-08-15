@@ -8,6 +8,7 @@ namespace Controllers {
         [SerializeField] private GameObject chest;
         [SerializeField] private GameObject[] exits;
         [SerializeField] private Vector2[] chestPositions;
+        [Tooltip("Drag the script that defines the goal")]
         [SerializeField] private Utils.GoalBase goalScript;
         
         public enum Goal : byte {
@@ -22,7 +23,7 @@ namespace Controllers {
         private Animator[] anim;
         private SpriteRenderer[] spriteRenderer;
 
-        [HideInInspector] public int numOfEnemies;
+        private int numOfEnemies;
 
         private void Start() {
             instance = this;
@@ -82,15 +83,6 @@ namespace Controllers {
             }
         }
 
-        // This is for the room goal of killing all enemies
-        public void RecalcEnemy() {
-            numOfEnemies--;
-            if (numOfEnemies <= 0) {
-                OpenDoor();
-                Debug.Log("Door should open");
-            }
-        }
-
         private void ConfigureGoal() {
             // goal = (Goal)Random.Range(0, System.Enum.GetValues(typeof(Goal)).Length);
             
@@ -146,6 +138,15 @@ namespace Controllers {
                 case 7:
                     anim[1].Play("DungeonDoorEast");
                     break;
+            }
+        }
+        
+        // This is for the room goal of killing all enemies
+        public void RecalcEnemy() {
+            numOfEnemies--;
+            if (numOfEnemies <= 0) {
+                OpenDoor();
+                Debug.Log("Door should open");
             }
         }
     }
