@@ -10,8 +10,19 @@
 - The master room will have two money sinks
 	- Door that player must pay coins to to open
 		- This will lead to final boss and the end of the game
-	- Merchant to buy upgrades
+	- Blacksmith to buy upgrades
 - Each loop will increase difficulty of rooms.
+- Blacksmith - Upgrades and sell equipment
+	- Sword
+	- Armur
+	- Chest finder (increases chance rooms spawn a chest)
+	- More hearts??
 
 ### Issues
 - Chests should have spawn points depending on room configuration
+
+### TODO
+- Player fall down pits
+- Spawn enemies in a room. The player will see them spawn out of like a smoke
+- Fix player death animation to be in the correct direction
+- Enemies need to drop only one item...i think they currently drop all

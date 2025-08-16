@@ -6,6 +6,7 @@ namespace Utils {
         
         [SerializeField] private Sprite switchDown;
 
+        private bool switchOn;
         private SpriteRenderer sprite;
         // private CircleCollider2D circleCollider2D;
 
@@ -31,6 +32,7 @@ namespace Utils {
 
         public void FlipSwitch() {
             sprite.sprite = switchDown;
+            Controllers.RoomController.instance.SwitchUsed();
         }
     }
 }

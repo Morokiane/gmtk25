@@ -3,17 +3,23 @@ using UnityEngine;
 
 namespace Enemies {
     public class Enemy : MonoBehaviour {
+        public static Enemy instance;
 
         [SerializeField] private uint health;
         [SerializeField] private GameObject[] drops;
         
-        public bool needToCount;
+        [Header("Damage Variables")]
+        public int damage = 1;
+        // This is set in the room controller
+        [HideInInspector] public bool needToCount;
         
         private Animator anim;
         private SpriteRenderer sprite;
         private Utils.PursueMover pursueMover;
         
         private void Start() {
+            instance = this;
+            
             anim = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
             pursueMover = GetComponent<Utils.PursueMover>();

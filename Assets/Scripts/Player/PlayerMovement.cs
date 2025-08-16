@@ -18,6 +18,7 @@ namespace Player {
         private Animator anim;
         private BoxCollider2D boxCollider2D;
         private PlayerInput playerInput;
+        private uint playerFacing;
         
         private Vector2 lastDirection;
         private InputAction moveAction;
@@ -40,7 +41,7 @@ namespace Player {
                 rb.linearVelocity = Vector2.zero;
             }
         }
-        
+
         private void Update() {
             if (Player.instance.canMove && !Player.instance.isAttacking) {
                 Vector2 input = moveAction.ReadValue<Vector2>();

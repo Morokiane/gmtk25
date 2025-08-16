@@ -84,5 +84,10 @@ namespace Player {
             anim.SetBool(AttackTrigger, false);
             hitbox.SetActive(false);
         }
+
+        public void FallIntoPit() {
+            canMove = false;
+            anim.Play("PlayerFall");
+        }
     }
 }

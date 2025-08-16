@@ -1,15 +1,18 @@
 using UnityEngine;
+using Utils;
 
 namespace Controllers {
     public class RoomController : MonoBehaviour {
         public static RoomController instance;
 
         public Goal goal;
-        [SerializeField] private GameObject chest;
         [SerializeField] private GameObject[] exits;
-        [SerializeField] private Vector2[] chestPositions;
+        [Header("Chest Options")]
+        [SerializeField] private GameObject chest;
+        [SerializeField] private int chestSpawnChance = 10;
+        [SerializeField] private GameObject[] chestPositions;
         [Tooltip("Drag the script that defines the goal")]
-        [SerializeField] private Utils.GoalBase goalScript;
+        [SerializeField] private GoalBase goalScript;
         
         public enum Goal : byte {
             KillAll,
@@ -18,8 +21,9 @@ namespace Controllers {
             Test
         }
 
-        private uint currentExit;
-        private Transform parent;
+        // private uint currentExit;
+        // private Transform parent;
+        private Vector2 spawnLocation;
         private Animator[] anim;
         private SpriteRenderer[] spriteRenderer;
 
@@ -85,7 +89,6 @@ namespace Controllers {
 
         private void ConfigureGoal() {
             // goal = (Goal)Random.Range(0, System.Enum.GetValues(typeof(Goal)).Length);
-            
             switch (goal) {
                 case Goal.KillAll:
                     numOfEnemies = goalScript.numOfEnemies;
@@ -106,13 +109,25 @@ namespace Controllers {
 
         //Randomly decide and pick a place to spawn a chest in a room
         private void ConfigureChest() {
-            int amountToSpawn = Random.Range(0, 2);
+            // roll a number between 0 and 100
+            int roll = Random.Range(0, 100);
 
-            while (amountToSpawn > 0) {
-                Vector2 randomPos = chestPositions[Random.Range(0, chestPositions.Length)];
-                amountToSpawn--;
-                Instantiate(chest, randomPos, Quaternion.identity, transform);
+            if (roll < chestSpawnChance) {
+                // pick random spawn point
+                int index = Random.Range(0, chestPositions.Length);
+                GameObject spawnPoint = chestPositions[index];
+
+                if (spawnPoint != null) {
+                    Instantiate(chest, spawnPoint.transform.position, Quaternion.identity, transform);
+                }
             }
+            
+            // int amountToSpawn = Random.Range(0, chestSpawnChance);
+            // while (amountToSpawn > 0) {
+            //     GameObject spawnPoint = chestPositions[Random.Range(0, chestPositions.Length)];
+            //     amountToSpawn--;
+            //     Instantiate(chest, spawnPoint.transform.position, Quaternion.identity, transform);
+            // }
         }
 
         private void OpenDoor() {
@@ -148,6 +163,10 @@ namespace Controllers {
                 OpenDoor();
                 Debug.Log("Door should open");
             }
+        }
+        
+        public void SwitchUsed() {
+            OpenDoor();
         }
     }
 }

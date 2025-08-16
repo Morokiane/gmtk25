@@ -10,11 +10,11 @@ namespace Utils {
         [SerializeField] private Sprite chestOpenSprite;
 
         private bool chestOpen;
-        private SpriteRenderer spriteRenderer;
+        private Animator anim;
         
         private void Start() {
             instance = this;
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            anim = GetComponent<Animator>();
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -36,7 +36,7 @@ namespace Utils {
                 // spawner.Spawn(3);
                 LevelController.instance.coins += randCoins;
                 HUDController.instance.CalcCoins();
-                spriteRenderer.sprite = chestOpenSprite;
+                anim.Play("Chest");
             }
             // Instantiate(chestLoot, transform.position, Quaternion.identity);
         }
