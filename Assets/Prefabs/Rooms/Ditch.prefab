@@ -999,12 +999,11 @@ MonoBehaviour:
   - {fileID: 3844209924231691071}
   - {fileID: 3451312694516728713}
   chestPositions:
-  - {x: -3, y: 1}
-  - {x: 4, y: 2}
-  - {x: 3, y: 2}
-  - {x: -3, y: -1}
+  - {x: 4.5, y: 2.5}
+  - {x: -3.5, y: 2.5}
+  - {x: -3, y: -2}
+  - {x: 4.25, y: -2}
   goalScript: {fileID: 1050419395437484342}
-  numOfEnemies: 0
 --- !u!114 &1050419395437484342
 MonoBehaviour:
   m_ObjectHideFlags: 0
