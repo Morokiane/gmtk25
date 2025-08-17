@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,7 +5,8 @@ using Random = UnityEngine.Random;
 namespace Enemies {
     public class Spikes : MonoBehaviour {
 
-        [SerializeField] private int damage;
+        public int damage = 1;
+
         private BoxCollider2D boxCollider;
         private Animator anim;
 

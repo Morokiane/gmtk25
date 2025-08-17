@@ -10,7 +10,7 @@ namespace Enemies {
         
         [Header("Damage Variables")]
         public int damage = 1;
-        // This is set in the room controller
+        // This is set by the room controller
         [HideInInspector] public bool needToCount;
         
         private Animator anim;

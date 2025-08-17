@@ -12,6 +12,7 @@ namespace Player {
 
         public int maxHealth;
         public int health;
+        // These should eventually be hidden in the inspector
         public bool canMove = true;
         public bool isAttacking;
         public bool canLoot;
@@ -21,6 +22,8 @@ namespace Player {
         private Animator anim;
         private PlayerMovement playerMovement;
         private Rigidbody2D rb;
+        private Vector2 lastPosition;
+        private uint facing; // 0 down / 1 left / 2 up / 3 right 
 
         private void Start() {
             if (instance == null) {
@@ -87,7 +90,28 @@ namespace Player {
 
         public void FallIntoPit() {
             canMove = false;
+            lastPosition = transform.position;
+            facing = playerMovement.playerFacing;
             anim.Play("PlayerFall");
+        }
+
+        public void Respawn() {
+            switch (facing) {
+                case 0:
+                    transform.position = new Vector2(lastPosition.x, lastPosition.y + 0.5f);
+                    break;
+                case 1:
+                    transform.position = new Vector2(lastPosition.x + 0.5f, lastPosition.y);
+                    break;
+                case 2:
+                    transform.position = new Vector2(lastPosition.x, lastPosition.y - 0.5f);
+                    break;
+                case 3:
+                    transform.position = new Vector2(lastPosition.x - 0.5f, lastPosition.y);
+                    break;
+            }
+            anim.Play("Idle");
+            canMove = true;
         }
     }
 }

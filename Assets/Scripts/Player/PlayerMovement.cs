@@ -14,11 +14,12 @@ namespace Player {
         [SerializeField] private Transform frontMarker;
         [SerializeField] private float frontDistance = 0.5f;
         
+         public uint playerFacing;
+        
         private Rigidbody2D rb;
-        private Animator anim;
+        public Animator anim;
         private BoxCollider2D boxCollider2D;
         private PlayerInput playerInput;
-        private uint playerFacing;
         
         private Vector2 lastDirection;
         private InputAction moveAction;
@@ -59,6 +60,20 @@ namespace Player {
                         anim.SetFloat(LastInputX, lastDirection.x);
                         anim.SetFloat(LastInputY, lastDirection.y);
                     }
+                }
+
+                if (input == Vector2.down) {
+                    playerFacing = 0;
+                    Debug.Log("Player moving down");
+                } else if (input == Vector2.left) {
+                    playerFacing = 1;
+                    Debug.Log("Player moving left");
+                } else if (input == Vector2.up) {
+                    playerFacing = 2;
+                    Debug.Log("Player moving up");
+                } else if (input == Vector2.right) {
+                    playerFacing = 3;
+                    Debug.Log("Player moving right");
                 }
             }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Utils;
+using System.Collections;
 
 namespace Controllers {
     public class RoomController : MonoBehaviour {
@@ -7,12 +8,18 @@ namespace Controllers {
 
         public Goal goal;
         [SerializeField] private GameObject[] exits;
-        [Header("Chest Options")]
+        [Header("Chest Settings")]
         [SerializeField] private GameObject chest;
         [SerializeField] private int chestSpawnChance = 10;
         [SerializeField] private GameObject[] chestPositions;
         [Tooltip("Drag the script that defines the goal")]
         [SerializeField] private GoalBase goalScript;
+        [Header("Enemy Settings")]
+        [SerializeField] private GameObject spawnsplosion;
+        [SerializeField] private GameObject[] availableEnemies;
+        [SerializeField] private GameObject[] enemySpawnLocations;
+        [SerializeField] private float minDelay = 0.1f;
+        [SerializeField] private float maxDelay = 1.0f;
         
         public enum Goal : byte {
             KillAll,
@@ -44,6 +51,15 @@ namespace Controllers {
                 ConfigureExit();
                 ConfigureGoal();
                 ConfigureChest();
+                StartCoroutine(ConfigureEnemies());
+            }
+
+            // Turn off the placeholder graphic for chests
+            foreach (GameObject chest in chestPositions) {
+                SpriteRenderer spriteRenderer = chest.GetComponent<SpriteRenderer>();
+                if (spriteRenderer) {
+                    spriteRenderer.enabled = false;
+                }
             }
         }
 
@@ -121,15 +137,21 @@ namespace Controllers {
                     Instantiate(chest, spawnPoint.transform.position, Quaternion.identity, transform);
                 }
             }
-            
-            // int amountToSpawn = Random.Range(0, chestSpawnChance);
-            // while (amountToSpawn > 0) {
-            //     GameObject spawnPoint = chestPositions[Random.Range(0, chestPositions.Length)];
-            //     amountToSpawn--;
-            //     Instantiate(chest, spawnPoint.transform.position, Quaternion.identity, transform);
-            // }
         }
 
+        private IEnumerator ConfigureEnemies() {
+            // Wait for the room to load and the fade to end
+            yield return new WaitForSeconds(1.5f);
+            // Spawn the enemies at a staggered time
+            foreach (GameObject spawnPoint in enemySpawnLocations) {
+                if (spawnPoint != null) {
+                    float delay = Random.Range(minDelay, maxDelay);
+                    Instantiate(spawnsplosion, spawnPoint.transform.position, Quaternion.identity);
+                    yield return new WaitForSeconds(delay);
+                }
+            }
+        }
+        
         private void OpenDoor() {
             switch (LevelController.instance.currentRoom) {
                 case 1:

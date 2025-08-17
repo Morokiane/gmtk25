@@ -7,7 +7,6 @@ namespace Utils {
         public static Chest instance;
 
         // [SerializeField] private Spawner spawner;
-        [SerializeField] private Sprite chestOpenSprite;
 
         private bool chestOpen;
         private Animator anim;

@@ -8,3 +8,4 @@
 	- Player can fall down pits
 	- Player has fall animation for pits
 - Changed bat shadow to be transparent
+- Enemies will spawn when the room loads

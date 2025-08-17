@@ -22,7 +22,7 @@
 - Chests should have spawn points depending on room configuration
 
 ### TODO
-- Player fall down pits
+- ~~Player fall down pits~~
 - Spawn enemies in a room. The player will see them spawn out of like a smoke
 - Fix player death animation to be in the correct direction
 - Enemies need to drop only one item...i think they currently drop all

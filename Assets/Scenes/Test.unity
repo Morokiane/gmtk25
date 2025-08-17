@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -458,7 +458,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1798065585
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -925,8 +925,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 750600961}
-  - component: {fileID: 750600962}
   - component: {fileID: 750600963}
+  - component: {fileID: 750600962}
   m_Layer: 10
   m_Name: Hitbox
   m_TagString: Untagged
@@ -1085,7 +1085,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1798065585
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2311659948842064771, guid: d1fa6ed4087c64d84b3df120c596dafc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1131,6 +1131,8 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   frontMarker: {fileID: 212597585}
   frontDistance: 0.5
+  playerFacing: 0
+  anim: {fileID: 0}
 --- !u!114 &1046673130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,7 +1533,7 @@ MonoBehaviour:
   currentRoom: 0
   rooms:
   - {fileID: 4494678999924004456, guid: b9dc0ca2cae8b40dfbdbc8e719dce23e, type: 3}
-  - {fileID: 6407596406076987020, guid: 1144da292db654f9d83a66517cb4ee97, type: 3}
+  - {fileID: 6407596406076987020, guid: 4a7139546df914b1caeec2b0aad78043, type: 3}
   currentRoomInstance: {fileID: 0}
   coins: 0
   playerDamage: 0
