@@ -31,7 +31,7 @@ namespace Utils {
         public void OpenChest() {
             if (!chestOpen) {
                 chestOpen = true;
-                int randCoins = Random.Range(1, 5);
+                int randCoins = Random.Range(3, 6);
                 // spawner.Spawn(3);
                 LevelController.instance.coins += randCoins;
                 HUDController.instance.CalcCoins();

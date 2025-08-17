@@ -15,11 +15,13 @@ namespace Controllers {
         [Tooltip("Drag the script that defines the goal")]
         [SerializeField] private GoalBase goalScript;
         [Header("Enemy Settings")]
+        [SerializeField] private int numOfSpawns;
         [SerializeField] private GameObject spawnsplosion;
         [SerializeField] private GameObject[] availableEnemies;
         [SerializeField] private GameObject[] enemySpawnLocations;
         [SerializeField] private float minDelay = 0.1f;
         [SerializeField] private float maxDelay = 1.0f;
+        [SerializeField] private float spawnEffectDuration = 0.5f;
         
         public enum Goal : byte {
             KillAll,
@@ -30,11 +32,10 @@ namespace Controllers {
 
         // private uint currentExit;
         // private Transform parent;
+        private int numOfEnemies;
         private Vector2 spawnLocation;
         private Animator[] anim;
         private SpriteRenderer[] spriteRenderer;
-
-        private int numOfEnemies;
 
         private void Start() {
             instance = this;
@@ -50,7 +51,9 @@ namespace Controllers {
             if (LevelController.instance.currentRoom != 0) {
                 ConfigureExit();
                 ConfigureGoal();
-                ConfigureChest();
+                if (chest != null) {
+                    ConfigureChest();
+                }
                 StartCoroutine(ConfigureEnemies());
             }
 
@@ -107,7 +110,7 @@ namespace Controllers {
             // goal = (Goal)Random.Range(0, System.Enum.GetValues(typeof(Goal)).Length);
             switch (goal) {
                 case Goal.KillAll:
-                    numOfEnemies = goalScript.numOfEnemies;
+                    numOfEnemies = numOfSpawns;
                     Debug.Log("Kill all enemies");
                     break;
                 case Goal.Key:
@@ -142,12 +145,27 @@ namespace Controllers {
         private IEnumerator ConfigureEnemies() {
             // Wait for the room to load and the fade to end
             yield return new WaitForSeconds(1.5f);
-            // Spawn the enemies at a staggered time
-            foreach (GameObject spawnPoint in enemySpawnLocations) {
+
+            int spawnsRemaining = numOfSpawns;
+
+            while (spawnsRemaining > 0) {
+                // pick random spawn point
+                GameObject spawnPoint = enemySpawnLocations[Random.Range(0, enemySpawnLocations.Length)];
+
                 if (spawnPoint != null) {
+                    // pick random enemy prefab
+                    GameObject enemyPrefab = availableEnemies[Random.Range(0, availableEnemies.Length)];
+                    GameObject effect = Instantiate(spawnsplosion, spawnPoint.transform.position, Quaternion.identity, transform);
+
+                    yield return new WaitForSeconds(spawnEffectDuration);
+
+                    Destroy(effect);
+                    Instantiate(enemyPrefab, spawnPoint.transform.position, Quaternion.identity, transform);
+
                     float delay = Random.Range(minDelay, maxDelay);
-                    Instantiate(spawnsplosion, spawnPoint.transform.position, Quaternion.identity);
                     yield return new WaitForSeconds(delay);
+
+                    spawnsRemaining--;
                 }
             }
         }

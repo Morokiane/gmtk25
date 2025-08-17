@@ -48,6 +48,8 @@ namespace Player {
         
         public void DamagePlayer(int _damage) {
             health -= _damage;
+            // Player will freeze in attack if they are damaged. Not sure this will fix it
+            isAttacking = false;
             HUDController.instance.UpdateHUD(health);
             StartCoroutine(HUDController.instance.Shake(0.4f, 0.15f));
             
@@ -93,21 +95,27 @@ namespace Player {
             lastPosition = transform.position;
             facing = playerMovement.playerFacing;
             anim.Play("PlayerFall");
+
+            // When facing down push the player further into the pit so the graphics match
+            if (facing == 0) {
+                transform.position = new Vector2(lastPosition.x, lastPosition.y - 1);
+            }
         }
 
         public void Respawn() {
+            // 0 down / 1 left / 2 up / 3 right 
             switch (facing) {
                 case 0:
-                    transform.position = new Vector2(lastPosition.x, lastPosition.y + 0.5f);
+                    transform.position = new Vector2(lastPosition.x, lastPosition.y + 1);
                     break;
                 case 1:
-                    transform.position = new Vector2(lastPosition.x + 0.5f, lastPosition.y);
+                    transform.position = new Vector2(lastPosition.x + 1, lastPosition.y);
                     break;
                 case 2:
-                    transform.position = new Vector2(lastPosition.x, lastPosition.y - 0.5f);
+                    transform.position = new Vector2(lastPosition.x, lastPosition.y - 1);
                     break;
                 case 3:
-                    transform.position = new Vector2(lastPosition.x - 0.5f, lastPosition.y);
+                    transform.position = new Vector2(lastPosition.x - 1, lastPosition.y);
                     break;
             }
             anim.Play("Idle");

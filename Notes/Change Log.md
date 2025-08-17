@@ -1,3 +1,8 @@
+#### 17.08.25
+- Enemies spawn from portals
+- Changes the chest to hold more coins
+- Pits work better
+---
 #### 16.08.25
 - Chests
 	- Change chest spawning to gameobject placement

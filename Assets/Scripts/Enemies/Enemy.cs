@@ -6,7 +6,10 @@ namespace Enemies {
         public static Enemy instance;
 
         [SerializeField] private uint health;
+        [Header("Drop Settings")]
         [SerializeField] private GameObject[] drops;
+        [Tooltip("Add to 100")]
+        [SerializeField] private float[] dropChance;
         
         [Header("Damage Variables")]
         public int damage = 1;
@@ -15,6 +18,7 @@ namespace Enemies {
         
         private Animator anim;
         private SpriteRenderer sprite;
+        private CircleCollider2D circleCollider2D;
         private Utils.PursueMover pursueMover;
         
         private void Start() {
@@ -22,7 +26,12 @@ namespace Enemies {
             
             anim = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
+            circleCollider2D = GetComponent<CircleCollider2D>();
             pursueMover = GetComponent<Utils.PursueMover>();
+
+            if (Controllers.RoomController.instance.goal == 0) {
+                needToCount = true;
+            }
         }
         
         private void OnTriggerEnter2D(Collider2D other) {
@@ -36,6 +45,7 @@ namespace Enemies {
             health -= Controllers.LevelController.instance.playerDamage;
         
             if (health <= 0) {
+                circleCollider2D.enabled = false;
                 anim.Play("BatDeath");
                 CalcDrop();
             } else {
@@ -50,13 +60,15 @@ namespace Enemies {
         }
         
         private void CalcDrop() {
-            float dropChance = 30f;
             float roll = Random.Range(0f, 100f);
-        
-            if (roll < dropChance) {
-                Instantiate(drops[1], transform.position, Quaternion.identity, transform.parent);
-            } else {
-                Instantiate(drops[0], transform.position, Quaternion.identity, transform.parent);
+            float cumulative = 0f;
+
+            for (int i = 0; i < dropChance.Length; i++) {
+                cumulative += dropChance[i];
+                if (roll < cumulative) {
+                    Instantiate(drops[i], transform.position, Quaternion.identity, transform.parent);
+                    return;
+                }
             }
         }
         
