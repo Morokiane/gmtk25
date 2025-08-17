@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Utils;
 
 namespace Enemies {
     public class Enemy : MonoBehaviour {
@@ -19,7 +20,7 @@ namespace Enemies {
         private Animator anim;
         private SpriteRenderer sprite;
         private CircleCollider2D circleCollider2D;
-        private Utils.PursueMover pursueMover;
+        private PursueMover pursueMover;
         
         private void Start() {
             instance = this;
@@ -27,7 +28,7 @@ namespace Enemies {
             anim = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
             circleCollider2D = GetComponent<CircleCollider2D>();
-            pursueMover = GetComponent<Utils.PursueMover>();
+            pursueMover = GetComponent<PursueMover>();
 
             if (Controllers.RoomController.instance.goal == 0) {
                 needToCount = true;
@@ -77,6 +78,7 @@ namespace Enemies {
             if (needToCount) {
                 Controllers.RoomController.instance.RecalcEnemy();
             }
+
             Destroy(gameObject);
         }
     }

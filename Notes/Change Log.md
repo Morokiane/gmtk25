@@ -2,6 +2,7 @@
 - Enemies spawn from portals
 - Changes the chest to hold more coins
 - Pits work better
+- Add bleu slime sprites
 ---
 #### 16.08.25
 - Chests
