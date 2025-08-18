@@ -5,7 +5,7 @@ namespace Player {
         
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Enemy")) {
-                Player.instance.DamagePlayer(Enemies.Enemy.instance.damage);
+                Player.instance.DamagePlayer(Enemies.Enemy.instance.damageToPlayer);
             }
         }
     }

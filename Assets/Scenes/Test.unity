@@ -458,7 +458,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1798065585
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1085,7 +1085,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1798065585
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2311659948842064771, guid: d1fa6ed4087c64d84b3df120c596dafc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1534,7 +1534,6 @@ MonoBehaviour:
   rooms:
   - {fileID: 4494678999924004456, guid: b9dc0ca2cae8b40dfbdbc8e719dce23e, type: 3}
   - {fileID: 6407596406076987020, guid: 4a7139546df914b1caeec2b0aad78043, type: 3}
-  - {fileID: 6407596406076987020, guid: 1144da292db654f9d83a66517cb4ee97, type: 3}
   currentRoomInstance: {fileID: 0}
   coins: 0
   playerDamage: 0

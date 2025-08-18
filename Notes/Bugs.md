@@ -1,1 +1,2 @@
 - Player can get stuck after attack. No idea
+- Kill all enemies room no longer opens when enemies are dead

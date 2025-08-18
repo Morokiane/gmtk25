@@ -13,7 +13,7 @@ namespace Enemies {
         [SerializeField] private float[] dropChance;
         
         [Header("Damage Variables")]
-        public int damage = 1;
+        public int damageToPlayer = 1;
         // This is set by the room controller
         [HideInInspector] public bool needToCount;
         
@@ -30,6 +30,7 @@ namespace Enemies {
             circleCollider2D = GetComponent<CircleCollider2D>();
             pursueMover = GetComponent<PursueMover>();
 
+            // This will cause an error in the master room
             if (Controllers.RoomController.instance.goal == 0) {
                 needToCount = true;
             }

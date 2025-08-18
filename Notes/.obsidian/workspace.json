@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -196,10 +196,10 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "cbe260e42d8df98e",
+  "active": "1ca1b0d5ae8bd8dc",
   "lastOpenFiles": [
-    "Design.md",
     "Change Log.md",
+    "Design.md",
     "Bugs.md",
     "Code Snippets.md",
     "TODO.md",

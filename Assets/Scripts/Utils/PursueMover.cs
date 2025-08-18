@@ -48,11 +48,14 @@ namespace Utils {
             
             if (!Player.Player.instance.takeDamage && isPursuing) {
                 isPursuing = false;
-                LostPlayer();
+                PursuePlayer();
+                // LostPlayer();
             }
-
+            
+            // TODO Everything below breaks the enemy where they won't move
             if (delayPursue) {
                 delayTimer -= Time.deltaTime;
+                // Debug.Log(delayTimer);
                 if (delayTimer <= 0) {
                     isPursuing = true;
                 }
@@ -78,6 +81,7 @@ namespace Utils {
         }
 
         private void PursuePlayer() {
+            Debug.Log("pursuing player");
             Vector2 playerPos = Player.Player.instance.transform.position;
             Vector2 objectPos = transform.position;
             
@@ -87,11 +91,6 @@ namespace Utils {
                 // Removed rotation
                 // RotateTowardsPlayer(); 
             }
-        }
-
-        // You can delete this whole method if you're not using rotation anymore
-        private void RotateTowardsPlayer() {
-            // no longer needed
         }
 
         private void LostPlayer() {

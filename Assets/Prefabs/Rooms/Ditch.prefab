@@ -1394,15 +1394,12 @@ MonoBehaviour:
   - {fileID: 366798774800766701}
   - {fileID: 5161085617910835647}
   goalScript: {fileID: 0}
-  numOfSpawns: 4
+  numOfSpawns: 1
   spawnsplosion: {fileID: 721753416106534623, guid: 0185434feba2243a69a09507acd7eccf, type: 3}
   availableEnemies:
-  - {fileID: 719832017749544321, guid: 429a56691f452452bb189f478279ca97, type: 3}
+  - {fileID: 6146989167973401994, guid: 1eda86967b2ac40c4975969b513ee583, type: 3}
   enemySpawnLocations:
   - {fileID: 6885721523395819139}
-  - {fileID: 329915021868493228}
-  - {fileID: 8490527159116089782}
-  - {fileID: 2376476536991728595}
   minDelay: 0.1
   maxDelay: 2
   spawnEffectDuration: 0.5
