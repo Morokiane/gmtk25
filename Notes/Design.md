@@ -17,7 +17,7 @@
 	- Armur
 	- Chest finder (increases chance rooms spawn a chest)
 	- More hearts??
-
+Room size 12x6 floor tiles
 ### Issues
 - Chests should have spawn points depending on room configuration
 
