@@ -1,7 +1,10 @@
+#### 19.08.25
+- A A-Star Grid map to help with creating the Unity grid
+---
 #### 18.08.25
 - Fixed pursue mover for this style of enemy movement
 - A-Star path finding added
-    - ConfigureEnemy() disabled since it doesn't work with it
+    - ConfigureEnemy() disabled in RoomController since it doesn't work with it
 ---
 #### 17.08.25
 - Enemies spawn from portals

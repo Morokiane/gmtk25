@@ -36,18 +36,6 @@
             }
           },
           {
-            "id": "edebf269f088924b",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.9.10"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.9.10"
-            }
-          },
-          {
             "id": "1ca1b0d5ae8bd8dc",
             "type": "leaf",
             "state": {
@@ -210,9 +198,12 @@
   },
   "active": "3b61acfbefd87062",
   "lastOpenFiles": [
-    "Bugs.md",
     "Change Log.md",
     "Design.md",
+    "NTUA Distributed FTTx Network Architecture.pdf",
+    "distributed_split_fttx_spec.pdf",
+    "A-Star Grid Map.md",
+    "Bugs.md",
     "Code Snippets.md",
     "TODO.md",
     "Credits.md",
@@ -248,8 +239,6 @@
     "images/weapon-configs.png.meta",
     "images/adding-global-bloom-volume.png.meta",
     "images/bloom-package-requirements.png.meta",
-    "images/weapon-config-editor.png.meta",
-    "images/bloom-camera-settings.png.meta",
     "Levels/Desert.md",
     "Levels/Space.md",
     "Levels/Volcano.md",
