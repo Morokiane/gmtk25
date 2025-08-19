@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5564971623766756340}
+  - component: {fileID: 2182247057978291100}
   - component: {fileID: 3866174571181161634}
-  - component: {fileID: 8774968805698676676}
   - component: {fileID: 2066705781263881582}
   - component: {fileID: 427679554612693175}
   - component: {fileID: 1543951611739586985}
@@ -37,6 +37,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2182247057978291100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6146989167973401994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d1b28d42f6249fbbc6eda9e88d0186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentNode: {fileID: 0}
+  path: []
 --- !u!114 &3866174571181161634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,27 +69,6 @@ MonoBehaviour:
   damageToPlayer: 1
   needToCount: 0
   foundPit: 0
---- !u!114 &8774968805698676676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6146989167973401994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe4ae1cd02da4d839c587ac1daa8195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  delayPursue: 0
-  delayTime: 2
-  prePursueTime: 0
-  initialRotation: 0
-  rotationSpeed: 3.5
-  destroyObject: 0
-  knockbackDuration: 0.2
-  knockbackForce: 5
 --- !u!212 &2066705781263881582
 SpriteRenderer:
   m_ObjectHideFlags: 0

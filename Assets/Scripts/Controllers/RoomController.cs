@@ -54,7 +54,8 @@ namespace Controllers {
                 if (chest != null) {
                     ConfigureChest();
                 }
-                StartCoroutine(ConfigureEnemies());
+                // FIXME Commented out while I work on the A-Star pathfinding
+                // StartCoroutine(ConfigureEnemies());
             }
 
             // Turn off the placeholder graphic for chests

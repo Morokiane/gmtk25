@@ -1,13 +1,17 @@
 using UnityEngine;
-using Utils;
 using System.Collections.Generic;
+using Utils;
 
 namespace Controllers {
     public class AStarController : MonoBehaviour {
         public static AStarController instance;
 
         private void Awake() {
-            instance = this;
+            if (instance == null) {
+                instance = this;
+            } else {
+                Destroy(gameObject);
+            }
         }
 
         public List<Node> GeneratePath(Node start, Node end) {
@@ -63,6 +67,5 @@ namespace Controllers {
             }
             return null;
         }
-
     }
 }
