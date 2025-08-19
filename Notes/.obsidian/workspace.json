@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -107,7 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 260.5110321044922
+    "width": 200
   },
   "right": {
     "id": "b3d45d0cc7051d0d",
@@ -196,15 +196,14 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "1ca1b0d5ae8bd8dc",
+  "active": "cbe260e42d8df98e",
   "lastOpenFiles": [
+    "Bugs.md",
     "Change Log.md",
     "Design.md",
-    "Bugs.md",
     "Code Snippets.md",
     "TODO.md",
     "Credits.md",
-    "Bugs.md",
     "Recipes.canvas",
     "Recipes.md",
     "Recipe Setup.md",

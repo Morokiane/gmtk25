@@ -26,6 +26,7 @@ namespace Utils {
 
         private void Start() {
             rb = GetComponent<Rigidbody2D>();
+            // Don't think I need rotation stuff, but I'm going to keep it just in case
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, initialRotation)); // ok if you want a fixed starting rotation
             rotationSpeed *= 100;
 
@@ -46,37 +47,26 @@ namespace Utils {
                 return; // Skip normal movement during knockback
             }
             
-            if (!Player.Player.instance.takeDamage && isPursuing) {
-                isPursuing = false;
-                PursuePlayer();
-                // LostPlayer();
-            }
-            
-            // TODO Everything below breaks the enemy where they won't move
             if (delayPursue) {
                 delayTimer -= Time.deltaTime;
-                // Debug.Log(delayTimer);
+
                 if (delayTimer <= 0) {
+                    delayPursue = false;
                     isPursuing = true;
                 }
             }
 
-            if (!isPursuing) {
-                if (delayTimer <= prePursueTime) {
-                    // No need to rotate
-                }
-
-                // Move in direction of player without rotating
-                Vector2 direction = (Player.Player.instance.transform.position - transform.position).normalized;
-                transform.position += (Vector3)(direction * (moveSpeed * Time.deltaTime));
-                
-                if (direction.x > 0) {
-                    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                } else if (direction.x < 0) {
-                    transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                }
-            } else {
+            if (!delayPursue && isPursuing && !Player.Player.instance.takeDamage) {
                 PursuePlayer();
+            }
+
+            // This changes the enemy to face the player
+            Vector2 direction = (Player.Player.instance.transform.position - transform.position).normalized;
+
+            if (direction.x > 0) {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            } else if (direction.x < 0) {
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.lossyScale.z);
             }
         }
 
@@ -85,11 +75,8 @@ namespace Utils {
             Vector2 playerPos = Player.Player.instance.transform.position;
             Vector2 objectPos = transform.position;
             
-            if (Player.Player.instance.takeDamage) {
+            if (!Player.Player.instance.takeDamage) {
                 transform.position = Vector2.MoveTowards(objectPos, playerPos, moveSpeed * Time.fixedDeltaTime);
-
-                // Removed rotation
-                // RotateTowardsPlayer(); 
             }
         }
 

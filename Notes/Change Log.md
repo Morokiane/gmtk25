@@ -1,3 +1,7 @@
+#### 18.08.25
+- Fixed pursue mover for this style of enemy movement
+- 
+---
 #### 17.08.25
 - Enemies spawn from portals
 - Changes the chest to hold more coins
