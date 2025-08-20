@@ -24,6 +24,7 @@ namespace Controllers {
                 Node[] nodes = FindObjectsByType<Node>(FindObjectsSortMode.None);
                 
                 while (path == null || path.Count == 0) {
+                    // If this errors its because the AStarController is missing in the level
                     path = AStarController.instance.GeneratePath(currentNode, nodes[Random.Range(0, nodes.Length)]);
                 }
             }
