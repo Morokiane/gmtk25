@@ -7,7 +7,7 @@ namespace Controllers {
         public Node currentNode;
         public List<Node> path = new List<Node>();
 
-        private void Update() {
+        private void FixedUpdate() {
             CreatePath();
         }
 

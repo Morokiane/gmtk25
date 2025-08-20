@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -211,13 +211,13 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "c2baddc201e8de75",
+  "active": "cbe260e42d8df98e",
   "lastOpenFiles": [
+    "A-Star Grid Map.md",
     "Design.md",
     "Change Log.md",
     "NTUA Distributed FTTx Network Architecture.pdf",
     "distributed_split_fttx_spec.pdf",
-    "A-Star Grid Map.md",
     "Bugs.md",
     "Code Snippets.md",
     "TODO.md",
