@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -225,7 +225,7 @@
       "markdown-table-editor:Open Markdown Table Editor": false
     }
   },
-  "active": "7a59e28f9fc57098",
+  "active": "cbe260e42d8df98e",
   "lastOpenFiles": [
     "Design.md",
     "Random.md",

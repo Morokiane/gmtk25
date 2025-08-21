@@ -64,16 +64,16 @@ namespace Player {
 
                 if (input == Vector2.down) {
                     playerFacing = 0;
-                    Debug.Log("Player moving down");
+                    // Debug.Log("Player moving down");
                 } else if (input == Vector2.left) {
                     playerFacing = 1;
-                    Debug.Log("Player moving left");
+                    // Debug.Log("Player moving left");
                 } else if (input == Vector2.up) {
                     playerFacing = 2;
-                    Debug.Log("Player moving up");
+                    // Debug.Log("Player moving up");
                 } else if (input == Vector2.right) {
                     playerFacing = 3;
-                    Debug.Log("Player moving right");
+                    // Debug.Log("Player moving right");
                 }
             }
 

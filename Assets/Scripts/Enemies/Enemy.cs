@@ -39,7 +39,7 @@ namespace Enemies {
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Damage")) {
                 TakeDamage();
-                pursueMover.ApplyKnockback(transform.position);
+                // pursueMover.ApplyKnockback(transform.position);
             }
         }
         

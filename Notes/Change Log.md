@@ -1,3 +1,6 @@
+#### 20.08.25
+- New enemy controller with A-Star working
+---
 #### 19.08.25
 - A A-Star Grid map to help with creating the Unity grid
 - A-Star grid created in Unity

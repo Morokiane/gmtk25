@@ -39,7 +39,7 @@ namespace Controllers {
 
         private void Start() {
             instance = this;
-            Debug.Log(LevelController.instance.currentRoom);
+            // Debug.Log(LevelController.instance.currentRoom);
             anim = new Animator[exits.Length];
             spriteRenderer = new SpriteRenderer[exits.Length];
 
@@ -112,16 +112,16 @@ namespace Controllers {
             switch (goal) {
                 case Goal.KillAll:
                     numOfEnemies = numOfSpawns;
-                    Debug.Log("Kill all enemies");
+            //         Debug.Log("Kill all enemies");
                     break;
                 case Goal.Key:
-                    Debug.Log("Find the key");
+            //         Debug.Log("Find the key");
                     break;
                 case Goal.Switch:
-                    Debug.Log("Find the switch");
+            //         Debug.Log("Find the switch");
                     break;
                 case Goal.Test:
-                    Debug.Log("Just opens the door");
+            //         Debug.Log("Just opens the door");
                     OpenDoor();
                     break;
             }
@@ -202,7 +202,7 @@ namespace Controllers {
             numOfEnemies--;
             if (numOfEnemies <= 0) {
                 OpenDoor();
-                Debug.Log("Door should open");
+            //     Debug.Log("Door should open");
             }
         }
         
