@@ -6,7 +6,8 @@ namespace Enemies {
     public class Enemy : MonoBehaviour {
         public static Enemy instance;
 
-        [SerializeField] private uint health;
+        public uint health;
+        public uint maxHealth;
         [Header("Drop Settings")]
         [SerializeField] private GameObject[] drops;
         [Tooltip("Add to 100")]
@@ -48,7 +49,7 @@ namespace Enemies {
         
             if (health <= 0) {
                 circleCollider2D.enabled = false;
-                anim.Play("BatDeath");
+                anim.SetTrigger("Death");
                 CalcDrop();
             } else {
                 StartCoroutine(FlashDamage());

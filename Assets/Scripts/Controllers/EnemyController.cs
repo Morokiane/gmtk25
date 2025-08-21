@@ -12,16 +12,16 @@ namespace Controllers {
 
         public Node currentNode;
         public List<Node> path;
-        
-        public float speed = 3;
-
         public StateMachine currentState;
+        public float speed = 3;
 
         private Player.Player player;
         private AStarController aStarController;
+        private Enemies.Enemy enemy;
 
         private void Start() {
             player = Player.Player.instance;
+            enemy = GetComponent<Enemies.Enemy>();
             aStarController = AStarController.instance;
             currentState = StateMachine.Patrol;
 
@@ -29,8 +29,6 @@ namespace Controllers {
             if (currentNode == null) {
                 currentNode = aStarController.FindNearestNode(transform.position);
             }
-
-            Debug.Log(player + " " + aStarController + " " + currentState);
         }
 
         private void Update() {
@@ -41,32 +39,31 @@ namespace Controllers {
                 case StateMachine.Engage:
                     Engage();
                     break;
-                // case StateMachine.Evade:
-                //     Evade();
-                //     break;
+                case StateMachine.Evade:
+                    Evade();
+                    break;
             }
 
             bool playerSeen = Vector2.Distance(transform.position, player.transform.position) < 5.0f;
             
-            if (!playerSeen && currentState != StateMachine.Patrol/*&& currentHealth > (maxHealth * 20) / 100*/) {
+            if (!playerSeen && currentState != StateMachine.Patrol && enemy.health > (enemy.maxHealth * 20) / 100) {
                 currentState = StateMachine.Patrol;
                 path.Clear();
-            } else if (playerSeen && currentState != StateMachine.Engage/*&& currentHealth > (maxHealth * 20) / 100*/) {
+            } else if (playerSeen && currentState != StateMachine.Engage && enemy.health > (enemy.maxHealth * 20) / 100) {
                 currentState = StateMachine.Engage;
                 path.Clear();
+            } else if (currentState != StateMachine.Evade && enemy.health <= (enemy.maxHealth * 20) / 100) {
+                currentState = StateMachine.Evade;
+                path.Clear();
             }
-            // } else if (currentState != StateMachine.Evade)/*&& currentHealth <= (maxHealth * 20) / 100*/ {
-            //     currentState = StateMachine.Evade;
-            //     path.Clear();
-            // }
 
             CreatePath();
         }
 
         public void Patrol() {
             if (path.Count == 0) {
-                path = AStarController.instance.GeneratePath(currentNode, AStarController.instance.NodesInScene()[Random.Range(0, AStarController.instance.NodesInScene().Length)]);
-                Debug.Log("Generate patrol path " + (path != null ? path.Count : 0));
+                path = aStarController.GeneratePath(currentNode, aStarController.NodesInScene()[Random.Range(0, aStarController.NodesInScene().Length)]);
+                // Debug.Log("Generate patrol path " + (path != null ? path.Count : 0));
             }
         }
 
