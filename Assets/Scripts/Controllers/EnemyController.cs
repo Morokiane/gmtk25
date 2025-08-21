@@ -44,15 +44,15 @@ namespace Controllers {
                     break;
             }
 
-            bool playerSeen = Vector2.Distance(transform.position, player.transform.position) < 5.0f;
+            bool playerSeen = Vector2.Distance(transform.position, player.transform.position) < 10.0f;
             
-            if (!playerSeen && currentState != StateMachine.Patrol && enemy.health > (enemy.maxHealth * 20) / 100) {
+            if (!playerSeen && currentState != StateMachine.Patrol && enemy.health > 1) {
                 currentState = StateMachine.Patrol;
                 path.Clear();
-            } else if (playerSeen && currentState != StateMachine.Engage && enemy.health > (enemy.maxHealth * 20) / 100) {
+            } else if (playerSeen && currentState != StateMachine.Engage && enemy.health > 1) {
                 currentState = StateMachine.Engage;
                 path.Clear();
-            } else if (currentState != StateMachine.Evade && enemy.health <= (enemy.maxHealth * 20) / 100) {
+            } else if (currentState != StateMachine.Evade && enemy.health <= 1) {
                 currentState = StateMachine.Evade;
                 path.Clear();
             }
