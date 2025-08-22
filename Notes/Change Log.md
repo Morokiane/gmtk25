@@ -1,3 +1,8 @@
+#### 21.08.25
+- Enemy fully functioning
+- Master room door opening with coins works now
+- Blacksmith sprite added
+---
 #### 20.08.25
 - New enemy controller with A-Star working
 ---

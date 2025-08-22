@@ -1,19 +1,23 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using Utils;
 
 namespace Controllers {
     public class EnemyController : MonoBehaviour {
-        public enum StateMachine {
+        public enum StateMachine : byte {
             Patrol,
             Engage,
-            Evade
+            Evade,
+            Pause
         }
 
         public Node currentNode;
         public List<Node> path;
         public StateMachine currentState;
-        public float speed = 3;
+        [SerializeField] private float speed = 3;
+        [SerializeField] private bool startPaused;
+        [SerializeField] private float pauseTime;
 
         private Player.Player player;
         private AStarController aStarController;
@@ -23,9 +27,14 @@ namespace Controllers {
             player = Player.Player.instance;
             enemy = GetComponent<Enemies.Enemy>();
             aStarController = AStarController.instance;
-            currentState = StateMachine.Patrol;
 
-            // Find the closest node
+            if (startPaused) {
+                currentState = StateMachine.Pause;
+            } else {
+                currentState = StateMachine.Patrol;
+            }
+
+            // Find and assign the closest node
             if (currentNode == null) {
                 currentNode = aStarController.FindNearestNode(transform.position);
             }
@@ -42,6 +51,9 @@ namespace Controllers {
                 case StateMachine.Evade:
                     Evade();
                     break;
+                case StateMachine.Pause:
+                    StartCoroutine(Pause());
+                    break;
             }
 
             bool playerSeen = Vector2.Distance(transform.position, player.transform.position) < 10.0f;
@@ -54,6 +66,9 @@ namespace Controllers {
                 path.Clear();
             } else if (currentState != StateMachine.Evade && enemy.health <= 1) {
                 currentState = StateMachine.Evade;
+                path.Clear();
+            } else if (currentState != StateMachine.Pause && startPaused) {
+                currentState = StateMachine.Pause;
                 path.Clear();
             }
 
@@ -79,8 +94,15 @@ namespace Controllers {
             }
         }
 
+        public IEnumerator Pause() {
+            if (path.Count == 0) {
+                yield return new WaitForSeconds(pauseTime);
+                currentState = StateMachine.Patrol;
+                startPaused = false;
+            }
+        }
+
         public void CreatePath() {
-            Debug.Log(path.Count);
             if (path.Count > 0) {
                 int x = 0;
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(path[x].transform.position.x, path[x].transform.position.y, -2), speed * Time.deltaTime);
