@@ -33,7 +33,7 @@ namespace Utils {
                 chestOpen = true;
                 int randCoins = Random.Range(3, 6);
                 // spawner.Spawn(3);
-                LevelController.instance.coins += randCoins;
+                LevelController.instance.coins += (uint)randCoins;
                 HUDController.instance.CalcCoins();
                 anim.Play("Chest");
             }

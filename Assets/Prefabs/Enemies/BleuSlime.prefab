@@ -51,6 +51,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
   path: []
+  currentState: 0
+  speed: 2
+  startPaused: 1
+  pauseTime: 1
 --- !u!114 &3866174571181161634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,11 +68,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  drops: []
-  dropChance: []
+  maxHealth: 3
+  drops:
+  - {fileID: 5972475682811690776, guid: 5848781611f3f42b88faf777c621f67e, type: 3}
+  - {fileID: 1217034984937698697, guid: c2ad3dc8b68a94ec986ba92aac4f0638, type: 3}
+  dropChance:
+  - 95
+  - 5
   damageToPlayer: 1
   needToCount: 0
-  foundPit: 0
 --- !u!212 &2066705781263881582
 SpriteRenderer:
   m_ObjectHideFlags: 0

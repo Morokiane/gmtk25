@@ -6,10 +6,11 @@ namespace Enemies {
     public class Enemy : MonoBehaviour {
         public static Enemy instance;
 
-        [SerializeField] private uint health;
+        public uint health;
+        public uint maxHealth;
         [Header("Drop Settings")]
         [SerializeField] private GameObject[] drops;
-        [Tooltip("Add to 100")]
+        [Tooltip("Percent Change of each item. Must add up to 100%")]
         [SerializeField] private float[] dropChance;
         
         [Header("Damage Variables")]
@@ -39,7 +40,7 @@ namespace Enemies {
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Damage")) {
                 TakeDamage();
-                pursueMover.ApplyKnockback(transform.position);
+                // pursueMover.ApplyKnockback(transform.position);
             }
         }
 
@@ -50,7 +51,7 @@ namespace Enemies {
             if (health <= 0)
             {
                 circleCollider2D.enabled = false;
-                anim.Play("BatDeath");
+                anim.SetTrigger("Death");
                 CalcDrop();
             }
             else
