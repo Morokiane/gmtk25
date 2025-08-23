@@ -2,7 +2,7 @@ using Controllers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Utils {
+namespace Objects {
     public class Chest : MonoBehaviour {
         public static Chest instance;
 

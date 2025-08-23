@@ -75,7 +75,7 @@ namespace Player {
         public void OnInteract(InputAction.CallbackContext context) {
             // context.started gets only when the key is pressed
              if (context.started && canLoot) {
-                Utils.Chest.instance.OpenChest();
+                Objects.Chest.instance.OpenChest();
              }
 
              if (context.started && canInteract) {
