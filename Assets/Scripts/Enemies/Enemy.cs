@@ -10,7 +10,7 @@ namespace Enemies {
         public uint maxHealth;
         [Header("Drop Settings")]
         [SerializeField] private GameObject[] drops;
-        [Tooltip("Add to 100")]
+        [Tooltip("Percent Change of each item. Must add up to 100%")]
         [SerializeField] private float[] dropChance;
         
         [Header("Damage Variables")]
