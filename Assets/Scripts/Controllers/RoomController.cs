@@ -30,8 +30,6 @@ namespace Controllers {
             Test
         }
 
-        // private uint currentExit;
-        // private Transform parent;
         private int numOfEnemies;
         private Vector2 spawnLocation;
         private Animator[] anim;
@@ -111,22 +109,22 @@ namespace Controllers {
             switch (goal) {
                 case Goal.KillAll:
                     numOfEnemies = numOfSpawns;
-            //         Debug.Log("Kill all enemies");
+                    // Debug.Log("Kill all enemies");
                     break;
                 case Goal.Key:
-            //         Debug.Log("Find the key");
+                    // Debug.Log("Find the key");
                     break;
                 case Goal.Switch:
-            //         Debug.Log("Find the switch");
+                    // Debug.Log("Find the switch");
                     break;
                 case Goal.Test:
-            //         Debug.Log("Just opens the door");
+                    // Debug.Log("Just opens the door");
                     OpenDoor();
                     break;
             }
         }
 
-        //Randomly decide and pick a place to spawn a chest in a room
+        // Randomly decide and pick a place to spawn a chest in a room
         private void ConfigureChest() {
             // roll a number between 0 and 100
             int roll = Random.Range(0, 100);

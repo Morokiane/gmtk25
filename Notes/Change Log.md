@@ -1,3 +1,7 @@
+#### 22.08.25
+- Breakable pot added with drop
+- Added pillar room
+---
 #### 21.08.25
 - Enemy fully functioning
 - Master room door opening with coins works now

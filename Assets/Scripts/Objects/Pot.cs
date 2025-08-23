@@ -9,28 +9,25 @@ namespace Objects {
         [SerializeField] private float[] dropChance;
 
         private bool canBreak;
-        private bool broken;
         
         private SpriteRenderer spriteRenderer;
-        private CapsuleCollider2D capsuleCollider2D;
         private Animator anim;
 
         private void Start() {
             spriteRenderer = GetComponent<SpriteRenderer>();
-            capsuleCollider2D = GetComponent<CapsuleCollider2D>();
             anim = GetComponent<Animator>();
         }
         
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Player") && !broken) {
+            if (other.CompareTag("Player")) {
                 canBreak = true;
-            } else if (other.CompareTag("Damage") && !broken) {
+            } else if (other.CompareTag("Damage") && canBreak) {
                 TakeDamage();
             }
         }
 
         private void OnTriggerExit2D(Collider2D other) {
-            if (other.CompareTag("Player") && !broken) {
+            if (other.CompareTag("Player")) {
                 canBreak = false;
             }
         }
@@ -39,9 +36,7 @@ namespace Objects {
             health -= Controllers.LevelController.instance.playerDamage;
 
             if (health <= 0) {
-                capsuleCollider2D.enabled = false;
                 anim.Play("Pot");
-                broken = true;
                 CalcDrop();
             }
         }
