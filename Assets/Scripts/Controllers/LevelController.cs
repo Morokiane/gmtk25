@@ -16,7 +16,7 @@ namespace Controllers {
         public uint coins;
         public uint playerDamage;
 
-        private int lastRoomIndex = -1; // Declare this somewhere in your class
+        private int lastRoomIndex = -1;
 
         private void Start() {
             if (instance == null) {
