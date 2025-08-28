@@ -6,17 +6,21 @@ namespace Controllers {
         public static LevelController instance;
 
         public uint coinsCollected;
-        public int currentRoom;
+        public uint coinsToOpen;
+        // Rooms are 0 - 7 this tells the game how to configure the exit depending on the current room number
+        [HideInInspector] public int currentRoom;
         [Header("Available rooms to load")]
         public GameObject[] rooms;
 
-        private uint loopLevel; // Each completed loop increases the level
+        public uint loopLevel; // Each completed loop increases the level
         public GameObject currentRoomInstance;
 
-        public uint coins;
+        public uint totalCoins; // Keeping this as maybe a sort of score
         public uint playerDamage;
 
         private int lastRoomIndex = -1;
+
+        [HideInInspector] public bool masterDoorCoinSlot;
 
         private void Start() {
             if (instance == null) {
@@ -26,7 +30,10 @@ namespace Controllers {
             }
     
             playerDamage = 1;
-            coinsCollected = 5;
+            // coinsToOpen = 5;
+            coinsCollected = 15;
+
+            Debug.Log(coinsCollected);
 
             currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
         }

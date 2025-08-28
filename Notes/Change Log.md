@@ -1,3 +1,6 @@
+#### 27.08.25
+- Coins stuff for the master door to open correctly
+---
 #### 22.08.25
 - Breakable pot added with drop
 - Added pillar room

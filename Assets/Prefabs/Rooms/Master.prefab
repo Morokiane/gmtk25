@@ -279,6 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8672435500475463061}
+  - component: {fileID: 6117093710378597890}
   - component: {fileID: 1853327995553822273}
   - component: {fileID: 7541226112294889845}
   m_Layer: 0
@@ -308,6 +309,19 @@ Transform:
   - {fileID: 2134575189325768265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6117093710378597890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494678999924004456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fcb16d427fa4b5c9915d75b389844f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Controllers.MasterRoomController
+  masterDoor: {fileID: 6463354916574738556}
 --- !u!212 &1853327995553822273
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -779,7 +793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c67ce4f9cde94829abb8d960b441107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterDoor: {fileID: 6463354916574738556}
 --- !u!58 &4306723002020511228
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -814,8 +827,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03602624, y: 0.15311158}
-  m_Radius: 0.31086218
+  m_Offset: {x: 0.03602624, y: 0.2065345}
+  m_Radius: 0.3545717
 --- !u!1 &8205589768149490600
 GameObject:
   m_ObjectHideFlags: 0

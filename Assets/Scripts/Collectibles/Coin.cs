@@ -6,7 +6,7 @@ namespace Collectibles {
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
-                LevelController.instance.coins += 1;
+                LevelController.instance.coinsCollected += 1;
                 HUDController.instance.CalcCoins();
                 Destroy(gameObject);
             }

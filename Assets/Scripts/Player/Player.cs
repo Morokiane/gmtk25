@@ -81,6 +81,10 @@ namespace Player {
              if (context.started && canInteract) {
                  Utils.Switch.instance.FlipSwitch();
              }
+
+            if (context.started && LevelController.instance.masterDoorCoinSlot) {
+                MasterRoomController.instance.OpenDoor();
+            }
         }
 
         public void ResetAttack() {

@@ -10,7 +10,13 @@ namespace Controllers {
         [SerializeField] private TextMeshProUGUI coinNum;
         [SerializeField] private Sprite[] healthHUD;
         [SerializeField] private Image healthImage; // UI Image component in your HUD
-        
+
+        [Header("Cost Window")]
+        [SerializeField] private GameObject costWindow;
+        [SerializeField] private TextMeshProUGUI coinsCollected;
+        [SerializeField] private TextMeshProUGUI costToOpen;
+        private bool costWindowActive;
+
         private Animator anim;
         private Camera mainCamera;
         
@@ -64,13 +70,20 @@ namespace Controllers {
         public void FadeOut() {
             anim.Play("FadeOut");
         }
-        
+
         public void FadeIn() {
             anim.Play("FadeIn");
         }
 
         public void CalcCoins() {
-            coinNum.text = LevelController.instance.coins.ToString();
+            coinNum.text = LevelController.instance.coinsCollected.ToString();
+        }
+
+        public void ShowCostWindow() {
+            coinsCollected.text = LevelController.instance.coinsCollected.ToString();
+            costToOpen.text = LevelController.instance.coinsToOpen.ToString();
+            costWindowActive = !costWindowActive;
+            costWindow.SetActive(costWindowActive);
         }
 
         public void GameOver() {
