@@ -7,7 +7,7 @@ namespace Utils {
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
                 HUDController.instance.ShowCostWindow();
-                LevelController.instance.masterDoorCoinSlot = true;
+                LevelController.instance.masterDoorActive = true;
             }
             // if (other.CompareTag("Player")) {
             //     if (Controllers.LevelController.instance.coinsCollected >= Controllers.LevelController.instance.coinsToOpen) {
@@ -19,7 +19,7 @@ namespace Utils {
         private void OnTriggerExit2D(Collider2D other) {
             if (other.CompareTag("Player")) {
                 HUDController.instance.ShowCostWindow();
-                LevelController.instance.masterDoorCoinSlot = false;
+                LevelController.instance.masterDoorActive = false;
             }
         }
     }

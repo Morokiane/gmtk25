@@ -13,15 +13,15 @@ namespace Player {
         public int maxHealth;
         public int health;
         // These should eventually be hidden in the inspector
-        public bool canMove = true;
-        public bool isAttacking;
-        public bool canLoot;
-        public bool takeDamage;
-        public bool canInteract;
+        [HideInInspector] public bool canMove = true;
+        [HideInInspector] public bool isAttacking;
+        [HideInInspector] public bool canLoot;
+        [HideInInspector] public bool takeDamage;
+        [HideInInspector] public bool canInteract;
         
         private Animator anim;
         private PlayerMovement playerMovement;
-        private Rigidbody2D rb;
+        private Rigidbody2D rigidBody;
         private Vector2 lastPosition;
         private uint facing; // 0 down / 1 left / 2 up / 3 right 
 
@@ -32,7 +32,7 @@ namespace Player {
                 Destroy(gameObject);
             }
 
-            rb = GetComponent<Rigidbody2D>();
+            rigidBody = GetComponent<Rigidbody2D>();
             playerMovement = GetComponent<PlayerMovement>();
             anim = GetComponent<Animator>();
 
@@ -64,7 +64,7 @@ namespace Player {
             if (context.performed) {
                 isAttacking = true;
                 canMove = false;
-                rb.linearVelocity = Vector2.zero;
+                rigidBody.linearVelocity = Vector2.zero;
                 playerMovement.moveInput = Vector2.zero;
                 anim.SetBool(IsWalking, false);
                 anim.SetTrigger(AttackTrigger);
@@ -82,8 +82,10 @@ namespace Player {
                  Utils.Switch.instance.FlipSwitch();
              }
 
-            if (context.started && LevelController.instance.masterDoorCoinSlot) {
-                MasterRoomController.instance.OpenDoor();
+            if (context.started && LevelController.instance.masterDoorActive) {
+                if (LevelController.instance.coinsCollected >= LevelController.instance.coinsToOpen) {
+                    MasterRoomController.instance.OpenDoor();
+                }
             }
         }
 

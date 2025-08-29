@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 namespace Controllers {
     public class LevelController : MonoBehaviour {
@@ -20,7 +20,7 @@ namespace Controllers {
 
         private int lastRoomIndex = -1;
 
-        [HideInInspector] public bool masterDoorCoinSlot;
+        [HideInInspector] public bool masterDoorActive;
 
         private void Start() {
             if (instance == null) {

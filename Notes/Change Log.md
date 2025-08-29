@@ -1,3 +1,8 @@
+
+#### 28.08.25
+- Master door opens with correct coinage
+- 
+---
 #### 27.08.25
 - Coins stuff for the master door to open correctly
 ---
