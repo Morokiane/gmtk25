@@ -5,8 +5,10 @@ namespace Controllers {
     public class LevelController : MonoBehaviour {
         public static LevelController instance;
 
+        [Header("Coin stuff")]
         public uint coinsCollected;
         public uint coinsToOpen;
+        public uint totalCoins;
         // Rooms are 0 - 7 this tells the game how to configure the exit depending on the current room number
         [HideInInspector] public int currentRoom;
         [Header("Available rooms to load")]
@@ -15,8 +17,9 @@ namespace Controllers {
         public uint loopLevel; // Each completed loop increases the level
         public GameObject currentRoomInstance;
 
-        public uint totalCoins; // Keeping this as maybe a sort of score
+        [Header("Player stuff")]
         public uint playerDamage;
+        public bool playerDead;
 
         private int lastRoomIndex = -1;
 
@@ -40,8 +43,13 @@ namespace Controllers {
 
         public void ChangeRoom() {
             HUDController.instance.FadeIn();
-            StartCoroutine(FadeIn());
-            StartCoroutine(FadeOut());
+
+            if (!playerDead) { 
+                StartCoroutine(FadeIn()); // Think I should change the name of this
+                StartCoroutine(FadeOut());
+            } else {
+                StartCoroutine(PlayerDied());
+            }
         }
 
         // This really should be called fade out...fucked that up
@@ -62,12 +70,23 @@ namespace Controllers {
             lastRoomIndex = roomToSpawn;
 
             currentRoomInstance = Instantiate(rooms[roomToSpawn], transform.position, Quaternion.identity);
+            Debug.Log(currentRoom + " room loaded");
         }
 
         private IEnumerator FadeOut() {
             yield return new WaitForSeconds(2f);
             HUDController.instance.FadeOut();
             Player.Player.instance.canMove = true;
+        }
+
+        private IEnumerator PlayerDied() {
+            yield return new WaitForSecondsRealtime(1f);
+
+            Player.Player.instance.transform.position = new Vector2(0f, 0f);
+            Destroy(currentRoomInstance);
+            currentRoomInstance = Instantiate(LevelController.instance.rooms[0], transform.position, Quaternion.identity);
+            currentRoom = 0;
+            StartCoroutine(FadeOut());
         }
     }
 }

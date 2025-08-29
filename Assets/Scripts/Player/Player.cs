@@ -54,9 +54,11 @@ namespace Player {
             StartCoroutine(HUDController.instance.Shake(0.4f, 0.15f));
             
             if (health <= 0) {
+                LevelController.instance.playerDead = true;
                 canMove = false;
                 anim.Play("PlayerDeathDown");
                 HUDController.instance.FadeIn();
+                LevelController.instance.ChangeRoom();
             }
         }
 
@@ -83,7 +85,7 @@ namespace Player {
              }
 
             if (context.started && LevelController.instance.masterDoorActive) {
-                if (LevelController.instance.coinsCollected >= LevelController.instance.coinsToOpen) {
+                if (LevelController.instance.totalCoins >= LevelController.instance.coinsToOpen) {
                     MasterRoomController.instance.OpenDoor();
                 }
             }
@@ -108,6 +110,7 @@ namespace Player {
             }
         }
 
+        // Pit respawn
         public void Respawn() {
             // 0 down / 1 left / 2 up / 3 right 
             switch (facing) {

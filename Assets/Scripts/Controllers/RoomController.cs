@@ -27,7 +27,8 @@ namespace Controllers {
             KillAll,
             Key,
             Switch,
-            Test
+            Test,
+            Dead
         }
 
         private int numOfEnemies;
