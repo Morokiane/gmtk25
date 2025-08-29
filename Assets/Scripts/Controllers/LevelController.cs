@@ -38,6 +38,7 @@ namespace Controllers {
 
             Debug.Log(coinsCollected);
 
+            // Loads the master room
             currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
         }
 
