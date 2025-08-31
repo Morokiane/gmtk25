@@ -6,9 +6,9 @@ namespace Controllers {
         public static LevelController instance;
 
         [Header("Coin stuff")]
-        public uint coinsCollected;
-        public uint coinsToOpen;
-        public uint totalCoins;
+        public uint coinsCollected; // coins collected in the level
+        public uint coinsToOpen; //coins required to open the master door
+        public uint totalCoins; //total coins collected thus far
         // Rooms are 0 - 7 this tells the game how to configure the exit depending on the current room number
         [HideInInspector] public int currentRoom;
         [Header("Available rooms to load")]
@@ -71,7 +71,7 @@ namespace Controllers {
             lastRoomIndex = roomToSpawn;
 
             currentRoomInstance = Instantiate(rooms[roomToSpawn], transform.position, Quaternion.identity);
-            Debug.Log(currentRoom + " room loaded");
+            // Debug.Log(currentRoom + " room loaded");
         }
 
         private IEnumerator FadeOut() {
@@ -85,8 +85,9 @@ namespace Controllers {
 
             Player.Player.instance.transform.position = new Vector2(0f, 0f);
             Destroy(currentRoomInstance);
-            currentRoomInstance = Instantiate(LevelController.instance.rooms[0], transform.position, Quaternion.identity);
+            currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
             currentRoom = 0;
+            Player.Player.instance.Reset();
             StartCoroutine(FadeOut());
         }
     }

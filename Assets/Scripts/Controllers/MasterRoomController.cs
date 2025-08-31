@@ -17,7 +17,13 @@ namespace Controllers {
 
             anim = masterDoor.GetComponent<Animator>();
             LevelController.instance.coinsCollected = LevelController.instance.totalCoins;
-            LevelController.instance.loopLevel += 1;
+            
+            if (!LevelController.instance.playerDead) {
+                LevelController.instance.loopLevel += 1;
+            } else {
+                LevelController.instance.playerDead = false;
+            }
+            
             Debug.Log("Master room loaded -" + " Loop level: " + LevelController.instance.loopLevel);
         }
 

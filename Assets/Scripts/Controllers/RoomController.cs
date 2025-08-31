@@ -63,6 +63,8 @@ namespace Controllers {
                     spriteRenderer.enabled = false;
                 }
             }
+            
+            Debug.Log(LevelController.instance.currentRoom);
         }
 
         private void ConfigureExit() {

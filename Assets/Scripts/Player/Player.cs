@@ -55,6 +55,8 @@ namespace Player {
             
             if (health <= 0) {
                 LevelController.instance.playerDead = true;
+                // TODO This is not working
+                LevelController.instance.coinsCollected = 0; 
                 canMove = false;
                 anim.Play("PlayerDeathDown");
                 HUDController.instance.FadeIn();
@@ -129,6 +131,12 @@ namespace Player {
             }
             anim.Play("Idle");
             canMove = true;
+        }
+
+        public void Reset() {
+            health = maxHealth;
+            HUDController.instance.UpdateHUD(health);
+            anim.Play("Idle");
         }
     }
 }

@@ -1,4 +1,7 @@
-
+#### 30.08.25
+- Fixed level loading when player resurrects
+- Player resets stats on res, but coins are messing up
+---
 #### 28.08.25
 - Master door opens with correct coinage
 - Started on player death and res
