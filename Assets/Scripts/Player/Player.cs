@@ -12,7 +12,7 @@ namespace Player {
 
         public int maxHealth;
         public int health;
-        // These should eventually be hidden in the inspector
+
         [HideInInspector] public bool canMove = true;
         [HideInInspector] public bool isAttacking;
         [HideInInspector] public bool canLoot;
@@ -136,7 +136,9 @@ namespace Player {
             health = maxHealth;
             HUDController.instance.UpdateHUD(health);
             HUDController.instance.CalcCoins();
+            // Spawn the player facing forward and reset animation back to idle
             anim.Play("Idle");
+            anim.SetFloat("LastInputY", -1);
         }
     }
 }

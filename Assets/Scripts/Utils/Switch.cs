@@ -5,6 +5,7 @@ namespace Utils {
         public static Switch instance;
         
         [SerializeField] private Sprite switchDown;
+        [SerializeField] private bool floorSwitch;
 
         private bool switchOn;
         private SpriteRenderer sprite;
@@ -18,9 +19,11 @@ namespace Utils {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
-            if (other.CompareTag("Player")) {
+            if (other.CompareTag("Player") && !floorSwitch) {
                 Player.Player.instance.canInteract = true;
                 Debug.Log(Player.Player.instance.canInteract);
+            } else {
+                FlipSwitch();
             }
         }
 

@@ -4,6 +4,8 @@
 - Fixed Master door coin display
 - Enemies will tick damage if they stay in the players hitbox
 - Added loop level text to HUD
+- Player respawns after dying like when the Master level loads
+- Added floor switch
 ---
 #### 30.08.25
 - Fixed level loading when player resurrects

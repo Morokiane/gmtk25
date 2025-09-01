@@ -77,7 +77,8 @@
               "title": "Bugs"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -224,11 +225,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3b61acfbefd87062",
+  "active": "cbe260e42d8df98e",
   "lastOpenFiles": [
+    "Design.md",
     "Change Log.md",
     "Random.md",
-    "Design.md",
     "A-Star Grid Map.md",
     "NTUA Distributed FTTx Network Architecture.pdf",
     "distributed_split_fttx_spec.pdf",
