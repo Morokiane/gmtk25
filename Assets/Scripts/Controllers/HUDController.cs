@@ -17,18 +17,20 @@ namespace Controllers {
         [SerializeField] private TextMeshProUGUI costToOpen;
         private bool costWindowActive;
 
+        [Header("Loop Level")]
+        [SerializeField] private TextMeshProUGUI llNum;
         private Animator anim;
         private Camera mainCamera;
         
         public GameObject fade;
-        
+
         private void Start() {
             if (instance == null) {
                 instance = this;
             } else {
                 Destroy(gameObject);
             }
-            
+
             anim = fade.GetComponent<Animator>();
             mainCamera = Camera.main;
         }
@@ -38,15 +40,6 @@ namespace Controllers {
             healthImage.sprite = healthHUD[currentHealth];
         }
         
-        // private void UpdateHUD() {
-        //     int health = Player.Player.instance.health;
-        //
-        //     // Clamp to avoid out-of-range errors
-        //     health = Mathf.Clamp(health, 0, healthHUD.Length - 1);
-        //
-        //     healthImage.sprite = healthHUD[health];
-        // }
-
         public IEnumerator Shake(float _magnitude, float _duration) {
             Vector3 originalPos = mainCamera.transform.position;
             float elapsedTime = 0f;
@@ -79,8 +72,12 @@ namespace Controllers {
             coinNum.text = LevelController.instance.coinsCollected.ToString();
         }
 
+        public void UpdateLoop() {
+            llNum.text = LevelController.instance.loopLevel.ToString();
+        }
+
         public void ShowCostWindow() {
-            coinsCollected.text = LevelController.instance.coinsCollected.ToString();
+            coinsCollected.text = LevelController.instance.totalCoins.ToString();
             costToOpen.text = LevelController.instance.coinsToOpen.ToString();
             costWindowActive = !costWindowActive;
             costWindow.SetActive(costWindowActive);

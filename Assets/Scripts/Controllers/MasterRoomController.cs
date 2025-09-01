@@ -16,10 +16,13 @@ namespace Controllers {
             }
 
             anim = masterDoor.GetComponent<Animator>();
-            LevelController.instance.coinsCollected = LevelController.instance.totalCoins;
             
             if (!LevelController.instance.playerDead) {
                 LevelController.instance.loopLevel += 1;
+                LevelController.instance.totalCoins = LevelController.instance.coinsCollected;
+                LevelController.instance.coinsCollected = 0;
+                HUDController.instance.CalcCoins();
+                HUDController.instance.UpdateLoop();
             } else {
                 LevelController.instance.playerDead = false;
             }

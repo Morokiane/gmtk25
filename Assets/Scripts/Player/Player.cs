@@ -36,7 +36,7 @@ namespace Player {
             playerMovement = GetComponent<PlayerMovement>();
             anim = GetComponent<Animator>();
 
-            maxHealth = 6;
+            // maxHealth = 6;
             health = maxHealth;
             
             HUDController.instance.UpdateHUD(health);
@@ -52,10 +52,9 @@ namespace Player {
             isAttacking = false;
             HUDController.instance.UpdateHUD(health);
             StartCoroutine(HUDController.instance.Shake(0.4f, 0.15f));
-            
-            if (health <= 0) {
+
+            if (health < 1 && !LevelController.instance.playerDead) {
                 LevelController.instance.playerDead = true;
-                // TODO This is not working
                 LevelController.instance.coinsCollected = 0; 
                 canMove = false;
                 anim.Play("PlayerDeathDown");
@@ -78,13 +77,13 @@ namespace Player {
                 
         public void OnInteract(InputAction.CallbackContext context) {
             // context.started gets only when the key is pressed
-             if (context.started && canLoot) {
+            if (context.started && canLoot) {
                 Objects.Chest.instance.OpenChest();
-             }
+            }
 
-             if (context.started && canInteract) {
-                 Utils.Switch.instance.FlipSwitch();
-             }
+            if (context.started && canInteract) {
+                Utils.Switch.instance.FlipSwitch();
+            }
 
             if (context.started && LevelController.instance.masterDoorActive) {
                 if (LevelController.instance.totalCoins >= LevelController.instance.coinsToOpen) {
@@ -136,6 +135,7 @@ namespace Player {
         public void Reset() {
             health = maxHealth;
             HUDController.instance.UpdateHUD(health);
+            HUDController.instance.CalcCoins();
             anim.Play("Idle");
         }
     }

@@ -44,18 +44,14 @@ namespace Enemies {
             }
         }
 
-        private void TakeDamage()
-        {
+        private void TakeDamage() {
             health -= Controllers.LevelController.instance.playerDamage;
 
-            if (health <= 0)
-            {
+            if (health <= 0) {
                 circleCollider2D.enabled = false;
                 anim.SetTrigger("Death");
                 CalcDrop();
-            }
-            else
-            {
+            } else {
                 StartCoroutine(FlashDamage());
             }
         }

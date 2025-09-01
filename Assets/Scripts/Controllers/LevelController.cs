@@ -32,11 +32,9 @@ namespace Controllers {
                 Destroy(gameObject);
             }
     
-            playerDamage = 1;
+            // playerDamage = 1;
             // coinsToOpen = 5;
-            coinsCollected = 15;
-
-            Debug.Log(coinsCollected);
+            // coinsCollected = 5;
 
             // Loads the master room
             currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
@@ -86,6 +84,7 @@ namespace Controllers {
             Player.Player.instance.transform.position = new Vector2(0f, 0f);
             Destroy(currentRoomInstance);
             currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
+            // Debug.Log(currentRoomInstance);
             currentRoom = 0;
             Player.Player.instance.Reset();
             StartCoroutine(FadeOut());

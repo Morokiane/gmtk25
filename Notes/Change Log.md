@@ -1,3 +1,10 @@
+#### 01.04.25
+- Fixed bug where player would continue to take damage after dying and Master level would not load
+- Fixed coins hud not updating after player resses
+- Fixed Master door coin display
+- Enemies will tick damage if they stay in the players hitbox
+- Added loop level text to HUD
+---
 #### 30.08.25
 - Fixed level loading when player resurrects
 - Player resets stats on res, but coins are messing up
