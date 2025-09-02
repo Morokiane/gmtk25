@@ -17,17 +17,17 @@ namespace Controllers {
 
             anim = masterDoor.GetComponent<Animator>();
             
-            if (!LevelController.instance.playerDead) {
-                LevelController.instance.loopLevel += 1;
-                LevelController.instance.totalCoins = LevelController.instance.coinsCollected;
-                LevelController.instance.coinsCollected = 0;
+            if (!GameController.instance.playerDead) {
+                GameController.instance.loopLevel += 1;
+                GameController.instance.totalCoins = GameController.instance.coinsCollected;
+                GameController.instance.coinsCollected = 0;
                 HUDController.instance.CalcCoins();
                 HUDController.instance.UpdateLoop();
             } else {
-                LevelController.instance.playerDead = false;
+                GameController.instance.playerDead = false;
             }
             
-            Debug.Log("Master room loaded -" + " Loop level: " + LevelController.instance.loopLevel);
+            Debug.Log("Master room loaded -" + " Loop level: " + GameController.instance.loopLevel);
         }
 
         public void OpenDoor() {

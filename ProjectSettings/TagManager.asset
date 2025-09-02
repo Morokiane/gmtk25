@@ -48,14 +48,8 @@ TagManager:
   - name: Background
     uniqueID: 876177843
     locked: 0
-  - name: Player
+  - name: Mid
     uniqueID: 1798065585
-    locked: 0
-  - name: Collectable
-    uniqueID: 827019039
-    locked: 0
-  - name: Enemy
-    uniqueID: 1544025381
     locked: 0
   - name: Foreground
     uniqueID: 1421361353

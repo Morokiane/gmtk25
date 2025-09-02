@@ -7,10 +7,10 @@ namespace Utils {
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
                 HUDController.instance.ShowCostWindow();
-                LevelController.instance.masterDoorActive = true;
+                GameController.instance.masterDoorActive = true;
             }
             // if (other.CompareTag("Player")) {
-            //     if (Controllers.LevelController.instance.coinsCollected >= Controllers.LevelController.instance.coinsToOpen) {
+            //     if (Controllers.GameController.instance.coinsCollected >= Controllers.GameController.instance.coinsToOpen) {
             //         anim.Play("DungeonDoorTop");
             //     }
             // }  
@@ -19,7 +19,7 @@ namespace Utils {
         private void OnTriggerExit2D(Collider2D other) {
             if (other.CompareTag("Player")) {
                 HUDController.instance.ShowCostWindow();
-                LevelController.instance.masterDoorActive = false;
+                GameController.instance.masterDoorActive = false;
             }
         }
     }

@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections;
 
 namespace Controllers {
-    public class LevelController : MonoBehaviour {
-        public static LevelController instance;
+    public class GameController : MonoBehaviour {
+        public static GameController instance;
 
         [Header("Coin stuff")]
         public uint coinsCollected; // coins collected in the level
-        public uint coinsToOpen; //coins required to open the master door
-        public uint totalCoins; //total coins collected thus far
+        public uint coinsToOpen;    // coins required to open the master door
+        public uint totalCoins;     // total coins collected thus far
         // Rooms are 0 - 7 this tells the game how to configure the exit depending on the current room number
         [HideInInspector] public int currentRoom;
         [Header("Available rooms to load")]
@@ -20,6 +20,7 @@ namespace Controllers {
         [Header("Player stuff")]
         public uint playerDamage;
         public bool playerDead;
+        public float stunDuration;
 
         private int lastRoomIndex = -1;
 
@@ -36,7 +37,7 @@ namespace Controllers {
             // coinsToOpen = 5;
             // coinsCollected = 5;
 
-            // Loads the master room
+            // Loads the master room (make sure it is always 0 in the array)
             currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
         }
 
@@ -44,7 +45,7 @@ namespace Controllers {
             HUDController.instance.FadeIn();
 
             if (!playerDead) { 
-                StartCoroutine(FadeIn()); // Think I should change the name of this
+                StartCoroutine(FadeIn());
                 StartCoroutine(FadeOut());
             } else {
                 StartCoroutine(PlayerDied());
@@ -69,7 +70,6 @@ namespace Controllers {
             lastRoomIndex = roomToSpawn;
 
             currentRoomInstance = Instantiate(rooms[roomToSpawn], transform.position, Quaternion.identity);
-            // Debug.Log(currentRoom + " room loaded");
         }
 
         private IEnumerator FadeOut() {
@@ -88,6 +88,10 @@ namespace Controllers {
             currentRoom = 0;
             Player.Player.instance.Reset();
             StartCoroutine(FadeOut());
+        }
+
+        public void QuitGame() {
+            Application.Quit();
         }
     }
 }

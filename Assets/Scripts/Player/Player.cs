@@ -53,13 +53,13 @@ namespace Player {
             HUDController.instance.UpdateHUD(health);
             StartCoroutine(HUDController.instance.Shake(0.4f, 0.15f));
 
-            if (health < 1 && !LevelController.instance.playerDead) {
-                LevelController.instance.playerDead = true;
-                LevelController.instance.coinsCollected = 0; 
+            if (health < 1 && !GameController.instance.playerDead) {
+                GameController.instance.playerDead = true;
+                GameController.instance.coinsCollected = 0; 
                 canMove = false;
                 anim.Play("PlayerDeathDown");
                 HUDController.instance.FadeIn();
-                LevelController.instance.ChangeRoom();
+                GameController.instance.ChangeRoom();
             }
         }
 
@@ -85,8 +85,8 @@ namespace Player {
                 Utils.Switch.instance.FlipSwitch();
             }
 
-            if (context.started && LevelController.instance.masterDoorActive) {
-                if (LevelController.instance.totalCoins >= LevelController.instance.coinsToOpen) {
+            if (context.started && GameController.instance.masterDoorActive) {
+                if (GameController.instance.totalCoins >= GameController.instance.coinsToOpen) {
                     MasterRoomController.instance.OpenDoor();
                 }
             }

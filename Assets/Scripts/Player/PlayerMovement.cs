@@ -24,12 +24,14 @@ namespace Player {
         private Vector2 lastDirection;
         private InputAction moveAction;
         
-        private void Awake() {
-            playerInput = GetComponent<PlayerInput>();
-            moveAction = playerInput.actions["Move"];
-        }
+        // private void Awake() {
+        //     playerInput = Controllers.GameController.instance.GetComponent<PlayerInput>();
+        //     moveAction = playerInput.actions["Move"];
+        // }
 
         private void Start() {
+            playerInput = Controllers.GameController.instance.GetComponent<PlayerInput>();
+            moveAction = playerInput.actions["Move"];
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
             boxCollider2D = GetComponent<BoxCollider2D>();

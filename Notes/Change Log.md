@@ -6,6 +6,10 @@
 - Added loop level text to HUD
 - Player respawns after dying like when the Master level loads
 - Added floor switch
+- Renamed LevelController -> GameController
+- Enemy will stun when hit
+- Moved Player Input off of player and onto GameController
+- You can quit the game now!
 ---
 #### 30.08.25
 - Fixed level loading when player resurrects

@@ -69,16 +69,16 @@ namespace Controllers {
         }
 
         public void CalcCoins() {
-            coinNum.text = LevelController.instance.coinsCollected.ToString();
+            coinNum.text = GameController.instance.coinsCollected.ToString();
         }
 
         public void UpdateLoop() {
-            llNum.text = LevelController.instance.loopLevel.ToString();
+            llNum.text = GameController.instance.loopLevel.ToString();
         }
 
         public void ShowCostWindow() {
-            coinsCollected.text = LevelController.instance.totalCoins.ToString();
-            costToOpen.text = LevelController.instance.coinsToOpen.ToString();
+            coinsCollected.text = GameController.instance.totalCoins.ToString();
+            costToOpen.text = GameController.instance.coinsToOpen.ToString();
             costWindowActive = !costWindowActive;
             costWindow.SetActive(costWindowActive);
         }

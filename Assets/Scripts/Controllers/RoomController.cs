@@ -38,7 +38,7 @@ namespace Controllers {
 
         private void Start() {
             instance = this;
-            // Debug.Log(LevelController.instance.currentRoom);
+            // Debug.Log(GameController.instance.currentRoom);
             anim = new Animator[exits.Length];
             spriteRenderer = new SpriteRenderer[exits.Length];
 
@@ -47,7 +47,7 @@ namespace Controllers {
                 anim[i] = exits[i].GetComponent<Animator>();
             }
 
-            if (LevelController.instance.currentRoom != 0) {
+            if (GameController.instance.currentRoom != 0) {
                 ConfigureExit();
                 ConfigureGoal();
                 if (chest != null) {
@@ -64,12 +64,13 @@ namespace Controllers {
                 }
             }
             
-            Debug.Log(LevelController.instance.currentRoom);
+            Debug.Log(GameController.instance.currentRoom);
         }
 
         private void ConfigureExit() {
             // Exits are 0 N, 1 E, 2 S, 3 W
-            switch (LevelController.instance.currentRoom) {
+            // Configures the exits depending on which room is loaded
+            switch (GameController.instance.currentRoom) {
                 case 1:
                     spriteRenderer[0].enabled = true;
                     Player.Player.instance.transform.position = new Vector2(-5.46f, 0f);
@@ -100,9 +101,9 @@ namespace Controllers {
                     break;
                 case 8: // This reloads the master room
                     Player.Player.instance.transform.position = new Vector2(0f, 0f);
-                    Destroy(LevelController.instance.currentRoomInstance);
-                    LevelController.instance.currentRoomInstance = Instantiate(LevelController.instance.rooms[0], transform.position, Quaternion.identity);
-                    LevelController.instance.currentRoom = 0;
+                    Destroy(GameController.instance.currentRoomInstance);
+                    GameController.instance.currentRoomInstance = Instantiate(GameController.instance.rooms[0], transform.position, Quaternion.identity);
+                    GameController.instance.currentRoom = 0;
                     break;
             }
         }
@@ -127,7 +128,7 @@ namespace Controllers {
             }
         }
 
-        // Randomly decide and pick a place to spawn a chest in a room
+        // Randomly decide and pick from available spawn points to put a chest
         private void ConfigureChest() {
             // roll a number between 0 and 100
             int roll = Random.Range(0, 100);
@@ -172,7 +173,7 @@ namespace Controllers {
         }
         
         private void OpenDoor() {
-            switch (LevelController.instance.currentRoom) {
+            switch (GameController.instance.currentRoom) {
                 case 1:
                     anim[0].Play("DungeonDoorTop");
                     break;

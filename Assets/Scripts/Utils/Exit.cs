@@ -6,7 +6,7 @@ namespace Utils {
         // Load the next level when player enters
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.CompareTag("Player")) {
-                Controllers.LevelController.instance.ChangeRoom();
+                Controllers.GameController.instance.ChangeRoom();
                 // Player.Player.instance.canExit = true;
             }
         }

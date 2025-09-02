@@ -15,6 +15,8 @@ namespace Controllers {
         public Node currentNode;
         public List<Node> path;
         public StateMachine currentState;
+        private StateMachine previousState;
+        
         [SerializeField] private float speed = 3;
         [SerializeField] private bool startPaused;
         [SerializeField] private float pauseTime;
@@ -22,25 +24,28 @@ namespace Controllers {
         private Player.Player player;
         private AStarController aStarController;
         private Enemies.Enemy enemy;
+        private bool isStunned;
 
         private void Start() {
             player = Player.Player.instance;
             enemy = GetComponent<Enemies.Enemy>();
             aStarController = AStarController.instance;
 
-            if (startPaused) {
-                currentState = StateMachine.Pause;
-            } else {
-                currentState = StateMachine.Patrol;
-            }
+            currentState = startPaused ? StateMachine.Pause : StateMachine.Patrol;
 
             // Find and assign the closest node
             if (currentNode == null) {
                 currentNode = aStarController.FindNearestNode(transform.position);
             }
+
+            if (startPaused) {
+                StartCoroutine(PauseForSeconds(pauseTime));
+            }
         }
 
         private void Update() {
+            if (isStunned) return;
+            
             switch (currentState) {
                 case StateMachine.Patrol:
                     Patrol();
@@ -52,7 +57,7 @@ namespace Controllers {
                     Evade();
                     break;
                 case StateMachine.Pause:
-                    StartCoroutine(Pause());
+                    // Do nothing if paused
                     break;
             }
 
@@ -66,9 +71,6 @@ namespace Controllers {
                 path.Clear();
             } else if (currentState != StateMachine.Evade && enemy.health <= 1) {
                 currentState = StateMachine.Evade;
-                path.Clear();
-            } else if (currentState != StateMachine.Pause && startPaused) {
-                currentState = StateMachine.Pause;
                 path.Clear();
             }
 
@@ -112,6 +114,35 @@ namespace Controllers {
                     path.RemoveAt(x);
                 }
             }            
+        }
+
+        public void Stun(float duration) {
+            if (!isStunned) {
+                StartCoroutine(StunRoutine(duration));
+            }
+        }
+
+        private IEnumerator StunRoutine(float duration) {
+            isStunned = true;
+            previousState = currentState;
+            currentState = StateMachine.Pause;
+            path.Clear();
+
+            yield return new WaitForSeconds(duration);
+
+            currentState = previousState;
+            isStunned = false;
+        }
+
+        private IEnumerator PauseForSeconds(float duration) {
+            isStunned = true;
+            currentState = StateMachine.Pause;
+
+            yield return new WaitForSeconds(duration);
+
+            currentState = StateMachine.Patrol;
+            isStunned = false;
+            startPaused = false;
         }
     }
 }

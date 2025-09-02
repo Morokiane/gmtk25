@@ -22,6 +22,7 @@ namespace Enemies {
         private SpriteRenderer sprite;
         private CircleCollider2D circleCollider2D;
         private PursueMover pursueMover;
+        private Controllers.EnemyController enemyController;
         
         private void Start() {
             instance = this;
@@ -30,6 +31,7 @@ namespace Enemies {
             sprite = GetComponent<SpriteRenderer>();
             circleCollider2D = GetComponent<CircleCollider2D>();
             pursueMover = GetComponent<PursueMover>();
+            enemyController = GetComponent<Controllers.EnemyController>();
 
             // This will cause an error in the master room
             if (Controllers.RoomController.instance.goal == 0) {
@@ -45,7 +47,8 @@ namespace Enemies {
         }
 
         private void TakeDamage() {
-            health -= Controllers.LevelController.instance.playerDamage;
+            health -= Controllers.GameController.instance.playerDamage;
+            enemyController.Stun(Controllers.GameController.instance.stunDuration);
 
             if (health <= 0) {
                 circleCollider2D.enabled = false;

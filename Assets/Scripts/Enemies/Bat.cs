@@ -26,7 +26,7 @@ namespace Enemies {
         // }
         //
         // private void TakeDamage() {
-        //     health -= Controllers.LevelController.instance.playerDamage;
+        //     health -= Controllers.GameController.instance.playerDamage;
         //
         //     if (health <= 0) {
         //         anim.Play("BatDeath");
