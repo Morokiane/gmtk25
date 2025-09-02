@@ -167,7 +167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1421361353
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d580e59261820404cb4792be1c1cf3a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -467,7 +467,8 @@ Transform:
   m_LocalPosition: {x: -3.5, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5856111227789792353}
   m_Father: {fileID: 8672435500475463061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7011724049320189703
@@ -482,6 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ade2c20a7aa4119954ad6b1291991a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechExclaim: {fileID: 5872996086727528555}
 --- !u!212 &5358786116538438267
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -921,7 +923,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1421361353
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16347591eed85a440a6da4354d036936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -980,3 +982,82 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.9851636}
   m_EdgeRadius: 0
+--- !u!1001 &5859102769265496526
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2134575189325768265}
+    m_Modifications:
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58164431602090405, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_Name
+      value: SpeechBubbleExclaim
+      objectReference: {fileID: 0}
+    - target: {fileID: 58164431602090405, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909500512121823354, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 909500512121823354, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1421361353
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+--- !u!4 &5856111227789792353 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2991562716186031, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+  m_PrefabInstance: {fileID: 5859102769265496526}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5872996086727528555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 58164431602090405, guid: 761a60399cb74479789514b0a8e930e1, type: 3}
+  m_PrefabInstance: {fileID: 5859102769265496526}
+  m_PrefabAsset: {fileID: 0}

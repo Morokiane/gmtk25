@@ -1,4 +1,4 @@
-#### 01.04.25
+#### 01.09.25
 - Fixed bug where player would continue to take damage after dying and Master level would not load
 - Fixed coins hud not updating after player resses
 - Fixed Master door coin display
@@ -10,6 +10,10 @@
 - Enemy will stun when hit
 - Moved Player Input off of player and onto GameController
 - You can quit the game now!
+- Added speech bubble graphics
+- Blacksmith
+	- Interaction bubble
+	- Interaction works
 ---
 #### 30.08.25
 - Fixed level loading when player resurrects

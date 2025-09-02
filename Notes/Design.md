@@ -18,13 +18,16 @@
 	- Chest finder (increases chance rooms spawn a chest)
 	- More hearts??
 	- Health pot
-Room size 12x6 floor tiles
-### Issues
-- ~~Chests should have spawn points depending on room configuration~~
+	- Sells Chest keys
+- Room size 12x6 floor tiles
+- Chests
+	- Hold coins
+	- Random chest style
+	- Need keys to unlock
 
 ### TODO
 - [x] Player fall down pits
 - [x] Spawn enemies in a room. The player will see them spawn out of like a smoke
 - [ ] Fix player death animation to be in the correct direction
-- [ ] Reset game when player dies
+- [x] Reset game when player dies
 

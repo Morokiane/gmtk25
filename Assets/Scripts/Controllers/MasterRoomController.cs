@@ -5,6 +5,7 @@ namespace Controllers {
         public static MasterRoomController instance;
 
         [SerializeField] private GameObject masterDoor;
+        public bool blacksmithInteract;
 
         private Animator anim;
 

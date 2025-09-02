@@ -9,6 +9,8 @@ namespace Controllers {
         public uint coinsCollected; // coins collected in the level
         public uint coinsToOpen;    // coins required to open the master door
         public uint totalCoins;     // total coins collected thus far
+        public uint chestKeys;
+        [SerializeField] private uint maxChestKeys = 3;
         // Rooms are 0 - 7 this tells the game how to configure the exit depending on the current room number
         [HideInInspector] public int currentRoom;
         [Header("Available rooms to load")]

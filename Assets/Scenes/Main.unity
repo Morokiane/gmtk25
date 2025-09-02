@@ -875,7 +875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150.03888, y: -26.998718}
+  m_AnchoredPosition: {x: -150.03882, y: -26.99878}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &487901902
@@ -2135,7 +2135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15.045288, y: -26.998657}
+  m_AnchoredPosition: {x: 15.04541, y: -26.998657}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1669524920
@@ -2248,6 +2248,8 @@ MonoBehaviour:
   coinsCollected: 0
   coinsToOpen: 25
   totalCoins: 0
+  chestKeys: 0
+  maxChestKeys: 3
   currentRoom: 0
   rooms:
   - {fileID: 4494678999924004456, guid: b9dc0ca2cae8b40dfbdbc8e719dce23e, type: 3}

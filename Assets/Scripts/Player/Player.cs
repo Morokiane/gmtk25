@@ -85,10 +85,12 @@ namespace Player {
                 Utils.Switch.instance.FlipSwitch();
             }
 
-            if (context.started && GameController.instance.masterDoorActive) {
-                if (GameController.instance.totalCoins >= GameController.instance.coinsToOpen) {
-                    MasterRoomController.instance.OpenDoor();
-                }
+            if (context.started && GameController.instance.masterDoorActive && GameController.instance.totalCoins >= GameController.instance.coinsToOpen) {
+                MasterRoomController.instance.OpenDoor();
+            }
+
+            if (context.started && MasterRoomController.instance.blacksmithInteract) {
+                Debug.Log("Open blacksmith menu");
             }
         }
 
