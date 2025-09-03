@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Controllers.MasterRoomController
   masterDoor: {fileID: 6463354916574738556}
+  blacksmithInteract: 0
 --- !u!212 &1853327995553822273
 SpriteRenderer:
   m_ObjectHideFlags: 0
