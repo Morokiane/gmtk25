@@ -1,3 +1,8 @@
+#### 03.09.25
+- Blacksmith buttons
+- Blacksmith costs
+- Realigned menu window
+---
 #### 01.09.25
 - Fixed bug where player would continue to take damage after dying and Master level would not load
 - Fixed coins hud not updating after player resses
