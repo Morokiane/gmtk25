@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 namespace Controllers {
     public class GameController : MonoBehaviour {
@@ -26,8 +27,10 @@ namespace Controllers {
         public float stunDuration;
 
         private int lastRoomIndex = -1;
+        private PlayerInput playerInput;
 
         [HideInInspector] public bool masterDoorActive;
+        public InputAction menuOpenCloseInput { get; private set; }
 
         private void Start() {
             if (instance == null) {
@@ -35,7 +38,9 @@ namespace Controllers {
             } else {
                 Destroy(gameObject);
             }
-    
+
+            playerInput = GetComponent<PlayerInput>();
+            menuOpenCloseInput = playerInput.actions["Submit"];
             // playerDamage = 1;
             // coinsToOpen = 5;
             // coinsCollected = 5;

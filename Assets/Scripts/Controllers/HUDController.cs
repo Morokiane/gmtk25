@@ -17,8 +17,11 @@ namespace Controllers {
         [SerializeField] private TextMeshProUGUI costToOpen;
         private bool costWindowActive;
 
+        [Header("Blacksmith Menu")]
+        [SerializeField] private TextMeshProUGUI itemCost; // Updates when the menu is opened from the GameController
+
         [Header("Loop Level")]
-        [SerializeField] private TextMeshProUGUI llNum;
+        [SerializeField] private TextMeshProUGUI loopLevelNum;
         private Animator anim;
         private Camera mainCamera;
         
@@ -40,13 +43,13 @@ namespace Controllers {
             healthImage.sprite = healthHUD[currentHealth];
         }
         
-        public IEnumerator Shake(float _magnitude, float _duration) {
+        public IEnumerator Shake(float magnitude, float duration) {
             Vector3 originalPos = mainCamera.transform.position;
             float elapsedTime = 0f;
 
-            while (elapsedTime < _duration) {
-                float xOffset = Random.Range(-1f, 1f) * _magnitude;
-                float yOffset = Random.Range(-1f, 1f) * _magnitude;
+            while (elapsedTime < duration) {
+                float xOffset = Random.Range(-1f, 1f) * magnitude;
+                float yOffset = Random.Range(-1f, 1f) * magnitude;
 
                 mainCamera.transform.position = new Vector3(xOffset, yOffset, -1.55f);
                 elapsedTime += Time.unscaledDeltaTime;
@@ -73,7 +76,7 @@ namespace Controllers {
         }
 
         public void UpdateLoop() {
-            llNum.text = GameController.instance.loopLevel.ToString();
+            loopLevelNum.text = GameController.instance.loopLevel.ToString();
         }
 
         public void ShowCostWindow() {
