@@ -30,7 +30,8 @@ namespace Controllers {
         private PlayerInput playerInput;
 
         [HideInInspector] public bool masterDoorActive;
-        public InputAction menuOpenCloseInput { get; private set; }
+        public bool MenuOpenCloseInput { get; private set; }
+        private InputAction menuOpenCloseAction;
 
         private void Start() {
             if (instance == null) {
@@ -40,13 +41,20 @@ namespace Controllers {
             }
 
             playerInput = GetComponent<PlayerInput>();
-            menuOpenCloseInput = playerInput.actions["Submit"];
+            menuOpenCloseAction = playerInput.actions["Interact"];
+
+            Debug.Log(menuOpenCloseAction);
+
             // playerDamage = 1;
             // coinsToOpen = 5;
             // coinsCollected = 5;
 
             // Loads the master room (make sure it is always 0 in the array)
             currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
+        }
+
+        private void Update() {
+            MenuOpenCloseInput = menuOpenCloseAction.WasPressedThisFrame();
         }
 
         public void ChangeRoom() {

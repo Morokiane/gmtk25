@@ -252,8 +252,10 @@ MonoBehaviour:
   costWindow: {fileID: 261142938}
   coinsCollected: {fileID: 1554586827}
   costToOpen: {fileID: 926400670}
+  blacksmithMenu: {fileID: 334151642}
   itemCost: {fileID: 372779685}
-  loopLevelNum: {fileID: 0}
+  firstButton: {fileID: 700287290}
+  loopLevelNum: {fileID: 56692304}
   fade: {fileID: 232849777}
 --- !u!1 &56692302
 GameObject:
@@ -267,7 +269,7 @@ GameObject:
   - component: {fileID: 56692305}
   - component: {fileID: 56692304}
   m_Layer: 5
-  m_Name: num
+  m_Name: LoopLevelNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1943,7 +1945,7 @@ GameObject:
   - component: {fileID: 926400671}
   - component: {fileID: 926400670}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: CostToOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2922,7 +2924,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2932,9 +2934,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: -961535201, guid: 1e9bb991f1d9941f085c774f046f8ad6, type: 3}
+    m_PressedSprite: {fileID: 1490911705, guid: 1e9bb991f1d9941f085c774f046f8ad6, type: 3}
+    m_SelectedSprite: {fileID: -961535201, guid: 1e9bb991f1d9941f085c774f046f8ad6, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3101,6 +3103,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Player.Player, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 23488634}
+        m_TargetAssemblyTypeName: Controllers.HUDController, Assembly-CSharp
+        m_MethodName: BlackSmithMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

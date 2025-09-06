@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Controllers {
     public class HUDController : MonoBehaviour {
@@ -18,7 +19,9 @@ namespace Controllers {
         private bool costWindowActive;
 
         [Header("Blacksmith Menu")]
+        [SerializeField] private GameObject blacksmithMenu;
         [SerializeField] private TextMeshProUGUI itemCost; // Updates when the menu is opened from the GameController
+        [SerializeField] private GameObject firstButton; // First button in the blacksmith menu that should be selected
 
         [Header("Loop Level")]
         [SerializeField] private TextMeshProUGUI loopLevelNum;
@@ -26,6 +29,7 @@ namespace Controllers {
         private Camera mainCamera;
         
         public GameObject fade;
+        private bool isPaused;
 
         private void Start() {
             if (instance == null) {
@@ -36,6 +40,41 @@ namespace Controllers {
 
             anim = fade.GetComponent<Animator>();
             mainCamera = Camera.main;
+
+            blacksmithMenu.SetActive(false);
+        }
+        
+        private void Update() {
+            if (GameController.instance.MenuOpenCloseInput) {
+                if (!isPaused) {
+                    Pause();
+                } else {
+                    Unpause();
+                }
+            }
+        }
+
+        public void Pause() {
+            isPaused = true;
+            Time.timeScale = 0f;
+
+            OpenBlacksmithMenu();
+        }
+
+        public void Unpause() {
+            isPaused = false;
+            Time.timeScale = 1f;
+
+            CloseBlacksmithMenu();
+        }
+
+        private void OpenBlacksmithMenu() {
+            blacksmithMenu.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(firstButton);
+        }
+
+        private void CloseBlacksmithMenu() {
+            blacksmithMenu.SetActive(false);
         }
         
         public void UpdateHUD(int currentHealth) {
