@@ -56,7 +56,7 @@ namespace Controllers {
         // }
 
         public void Test(InputAction.CallbackContext context) {
-            if (context.started) {
+            if (context.started && MasterRoomController.instance.blacksmithInteract) {
                 Debug.Log("Opening blacksmith menu");
             }
             // if (GameController.instance.MenuOpenCloseInput) {
