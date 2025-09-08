@@ -41,9 +41,7 @@ namespace Controllers {
             }
 
             playerInput = GetComponent<PlayerInput>();
-            menuOpenCloseAction = playerInput.actions["Interact"];
-
-            Debug.Log(menuOpenCloseAction);
+            // menuOpenCloseAction = playerInput.actions["Interact"];
 
             // playerDamage = 1;
             // coinsToOpen = 5;
@@ -53,9 +51,9 @@ namespace Controllers {
             currentRoomInstance = Instantiate(rooms[0], transform.position, Quaternion.identity);
         }
 
-        private void Update() {
-            MenuOpenCloseInput = menuOpenCloseAction.WasPressedThisFrame();
-        }
+        // private void Update() {
+        //     MenuOpenCloseInput = menuOpenCloseAction.WasPressedThisFrame();
+        // }
 
         public void ChangeRoom() {
             HUDController.instance.FadeIn();

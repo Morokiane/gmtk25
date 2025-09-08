@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Controllers {
     public class HUDController : MonoBehaviour {
@@ -44,14 +45,27 @@ namespace Controllers {
             blacksmithMenu.SetActive(false);
         }
         
-        private void Update() {
-            if (GameController.instance.MenuOpenCloseInput) {
-                if (!isPaused) {
-                    Pause();
-                } else {
-                    Unpause();
-                }
+        // private void Update() {
+        //     if (GameController.instance.MenuOpenCloseInput) {
+        //         if (!isPaused) {
+        //             Pause();
+        //         } else {
+        //             Unpause();
+        //         }
+        //     }
+        // }
+
+        public void Test(InputAction.CallbackContext context) {
+            if (context.started) {
+                Debug.Log("Opening blacksmith menu");
             }
+            // if (GameController.instance.MenuOpenCloseInput) {
+            //     if (!isPaused) {
+            //         Pause();
+            //     } else {
+            //         Unpause();
+            //     }
+            // }
         }
 
         public void Pause() {
