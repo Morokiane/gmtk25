@@ -2205,6 +2205,7 @@ MonoBehaviour:
   frontMarker: {fileID: 212597585}
   frontDistance: 0.5
   playerFacing: 0
+  disable: 0
   anim: {fileID: 0}
 --- !u!114 &1046673130
 MonoBehaviour:
@@ -2226,6 +2227,7 @@ MonoBehaviour:
   canLoot: 0
   takeDamage: 0
   canInteract: 0
+  playerMovement: {fileID: 0}
 --- !u!50 &1046673131
 Rigidbody2D:
   serializedVersion: 5
@@ -3032,6 +3034,8 @@ MonoBehaviour:
   playerDamage: 1
   playerDead: 0
   stunDuration: 0.5
+  hpPotCost: 5
+  keyCost: 10
   masterDoorActive: 0
 --- !u!4 &1800332899
 Transform:
@@ -3113,7 +3117,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 23488634}
         m_TargetAssemblyTypeName: Controllers.HUDController, Assembly-CSharp
-        m_MethodName: Test
+        m_MethodName: BlacksmithMenu
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

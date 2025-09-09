@@ -20,7 +20,7 @@ namespace Player {
         [HideInInspector] public bool canInteract;
         
         private Animator anim;
-        private PlayerMovement playerMovement;
+        public PlayerMovement playerMovement;
         private Rigidbody2D rigidBody;
         private Vector2 lastPosition;
         private uint facing; // 0 down / 1 left / 2 up / 3 right 
@@ -89,9 +89,9 @@ namespace Player {
                 MasterRoomController.instance.OpenDoor();
             }
 
-            if (context.started && MasterRoomController.instance.blacksmithInteract) {
-                Debug.Log("Open blacksmith menu");
-            }
+            // if (context.started && MasterRoomController.instance.blacksmithInteract) {
+            //     Debug.Log("Open blacksmith menu");
+            // }
         }
 
         public void ResetAttack() {

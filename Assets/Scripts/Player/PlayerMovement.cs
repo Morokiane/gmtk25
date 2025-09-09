@@ -14,7 +14,8 @@ namespace Player {
         [SerializeField] private Transform frontMarker;
         [SerializeField] private float frontDistance = 0.5f;
         
-         public uint playerFacing;
+        public uint playerFacing;
+        public bool disable;
         
         private Rigidbody2D rb;
         public Animator anim;

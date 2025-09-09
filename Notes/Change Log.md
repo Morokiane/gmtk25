@@ -1,3 +1,6 @@
+#### 08.09.25
+- Blacksmith menu working
+---
 #### 03.09.25
 - Blacksmith buttons
 - Blacksmith costs

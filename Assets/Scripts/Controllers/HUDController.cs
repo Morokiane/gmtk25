@@ -31,6 +31,7 @@ namespace Controllers {
         
         public GameObject fade;
         private bool isPaused;
+        private bool blacksmithMenuOpen;
 
         private void Start() {
             if (instance == null) {
@@ -54,22 +55,21 @@ namespace Controllers {
         //         }
         //     }
         // }
-
-        public void Test(InputAction.CallbackContext context) {
+        
+        public void BlacksmithMenu(InputAction.CallbackContext context) {
             if (context.started && MasterRoomController.instance.blacksmithInteract) {
-                Debug.Log("Opening blacksmith menu");
+                blacksmithMenu.SetActive(true);
+                if (!blacksmithMenuOpen) {
+                    OpenBlacksmithMenu();
+                } else {
+                    CloseBlacksmithMenu();
+                }
             }
-            // if (GameController.instance.MenuOpenCloseInput) {
-            //     if (!isPaused) {
-            //         Pause();
-            //     } else {
-            //         Unpause();
-            //     }
-            // }
         }
 
         public void Pause() {
             isPaused = true;
+            Player.Player.instance.playerMovement.enabled = false;
             Time.timeScale = 0f;
 
             OpenBlacksmithMenu();
@@ -77,17 +77,22 @@ namespace Controllers {
 
         public void Unpause() {
             isPaused = false;
+            Player.Player.instance.playerMovement.enabled = true;
             Time.timeScale = 1f;
 
             CloseBlacksmithMenu();
         }
 
         private void OpenBlacksmithMenu() {
+            blacksmithMenuOpen = true;
+            Player.Player.instance.playerMovement.enabled = false;
             blacksmithMenu.SetActive(true);
             EventSystem.current.SetSelectedGameObject(firstButton);
         }
 
         private void CloseBlacksmithMenu() {
+            blacksmithMenuOpen = false;
+            Player.Player.instance.playerMovement.enabled = true;
             blacksmithMenu.SetActive(false);
         }
         
