@@ -12,7 +12,7 @@ namespace Controllers {
         public uint totalCoins;     // total coins collected thus far
         [SerializeField] private uint maxCoins; // Max coins the player can collect
         public uint chestKeys;
-        [SerializeField] private uint maxChestKeys = 3;
+        public uint maxChestKeys = 3;
         // Rooms are 0 - 7 this tells the game how to configure the exit depending on the current room number
         [HideInInspector] public int currentRoom;
         [Header("Available rooms to load")]

@@ -1,3 +1,10 @@
+#### 09.09.25
+- Health & Key buttons working
+- Key HUD element added
+- Blacksmith price updates
+- Blacksmith window change (again)
+- Added Total Coins HUD to Master Room
+---
 #### 08.09.25
 - Blacksmith menu working
 ---

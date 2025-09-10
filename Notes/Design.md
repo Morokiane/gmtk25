@@ -24,6 +24,8 @@
 	- Hold coins
 	- Random chest style
 	- Need keys to unlock
+	- Loot explodes out of them
+- Breakable pots
 
 ### TODO
 - [x] Player fall down pits

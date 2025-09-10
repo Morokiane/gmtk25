@@ -10,6 +10,7 @@ namespace Controllers {
         public static HUDController instance;
 
         [SerializeField] private TextMeshProUGUI coinNum;
+        [SerializeField] private TextMeshProUGUI keyNum;
         [SerializeField] private Sprite[] healthHUD;
         [SerializeField] private Image healthImage; // UI Image component in your HUD
 
@@ -26,10 +27,17 @@ namespace Controllers {
 
         [Header("Loop Level")]
         [SerializeField] private TextMeshProUGUI loopLevelNum;
+        [Header("Total Cost")]
+        [SerializeField] private GameObject totalCoinsWindow;
+        [SerializeField] private TextMeshProUGUI totalCoinsNum;
+        private bool totalCoinsActive;
+
+        [Header("Fade object")]
+        public GameObject fade;
+        
         private Animator anim;
         private Camera mainCamera;
         
-        public GameObject fade;
         private bool isPaused;
         private bool blacksmithMenuOpen;
 
@@ -67,25 +75,10 @@ namespace Controllers {
             }
         }
 
-        public void Pause() {
-            isPaused = true;
-            Player.Player.instance.playerMovement.enabled = false;
-            Time.timeScale = 0f;
-
-            OpenBlacksmithMenu();
-        }
-
-        public void Unpause() {
-            isPaused = false;
-            Player.Player.instance.playerMovement.enabled = true;
-            Time.timeScale = 1f;
-
-            CloseBlacksmithMenu();
-        }
-
         private void OpenBlacksmithMenu() {
             blacksmithMenuOpen = true;
             Player.Player.instance.playerMovement.enabled = false;
+            Player.Player.instance.canAttack = false;
             blacksmithMenu.SetActive(true);
             EventSystem.current.SetSelectedGameObject(firstButton);
         }
@@ -93,6 +86,7 @@ namespace Controllers {
         private void CloseBlacksmithMenu() {
             blacksmithMenuOpen = false;
             Player.Player.instance.playerMovement.enabled = true;
+            Player.Player.instance.canAttack = true;
             blacksmithMenu.SetActive(false);
         }
         
@@ -117,6 +111,18 @@ namespace Controllers {
             ResetCamera();
         }
         
+        public void Pause() {
+            isPaused = true;
+            Player.Player.instance.playerMovement.enabled = false;
+            Time.timeScale = 0f;
+        }
+
+        public void Unpause() {
+            isPaused = false;
+            Player.Player.instance.playerMovement.enabled = true;
+            Time.timeScale = 1f;
+        }
+
         public void ResetCamera() {
             mainCamera.transform.position = new Vector3(0f, 0f, -10f);
         }
@@ -133,6 +139,10 @@ namespace Controllers {
             coinNum.text = GameController.instance.coinsCollected.ToString();
         }
 
+        public void CalcKeys() {
+            keyNum.text = GameController.instance.chestKeys.ToString();
+        }
+        
         public void UpdateLoop() {
             loopLevelNum.text = GameController.instance.loopLevel.ToString();
         }
@@ -142,6 +152,20 @@ namespace Controllers {
             costToOpen.text = GameController.instance.coinsToOpen.ToString();
             costWindowActive = !costWindowActive;
             costWindow.SetActive(costWindowActive);
+        }
+
+        public void ShowTotalCoins() {
+            if (!totalCoinsActive) {
+                totalCoinsWindow.SetActive(true);
+                totalCoinsActive = true;
+            }
+
+            totalCoinsNum.text = GameController.instance.totalCoins.ToString();
+        }
+
+        public void HideTotalCoins() {
+            totalCoinsActive = false;
+            totalCoinsWindow.SetActive(false);
         }
 
         public void GameOver() {

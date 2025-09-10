@@ -14,6 +14,7 @@ namespace Player {
         public int health;
 
         [HideInInspector] public bool canMove = true;
+        [HideInInspector] public bool canAttack = true;
         [HideInInspector] public bool isAttacking;
         [HideInInspector] public bool canLoot;
         [HideInInspector] public bool takeDamage;
@@ -64,7 +65,7 @@ namespace Player {
         }
 
         public void OnAttack(InputAction.CallbackContext context) {
-            if (context.performed) {
+            if (context.performed && canAttack) {
                 isAttacking = true;
                 canMove = false;
                 rigidBody.linearVelocity = Vector2.zero;

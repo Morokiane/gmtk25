@@ -20,7 +20,7 @@ namespace Controllers {
             
             if (!GameController.instance.playerDead) {
                 GameController.instance.loopLevel += 1;
-                GameController.instance.totalCoins = GameController.instance.coinsCollected;
+                GameController.instance.totalCoins += GameController.instance.coinsCollected;
                 GameController.instance.coinsCollected = 0;
                 HUDController.instance.CalcCoins();
                 HUDController.instance.UpdateLoop();
@@ -28,9 +28,16 @@ namespace Controllers {
                 GameController.instance.playerDead = false;
             }
             
+            HUDController.instance.ShowTotalCoins();
+            
             Debug.Log("Master room loaded -" + " Loop level: " + GameController.instance.loopLevel);
         }
 
+        private void OnDisable() {
+            if (HUDController.instance != null)
+                HUDController.instance.HideTotalCoins();
+        }
+        
         public void OpenDoor() {
             anim.Play("DungeonDoorTop");
         }

@@ -29,7 +29,7 @@ namespace Objects {
         }
 
         public void OpenChest() {
-            if (!chestOpen) {
+            if (!chestOpen && GameController.instance.chestKeys > 0) {
                 chestOpen = true;
                 int randCoins = Random.Range(3, 6);
                 // spawner.Spawn(3);
