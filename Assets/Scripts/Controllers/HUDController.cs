@@ -54,15 +54,15 @@ namespace Controllers {
             blacksmithMenu.SetActive(false);
         }
         
-        // private void Update() {
-        //     if (GameController.instance.MenuOpenCloseInput) {
-        //         if (!isPaused) {
-        //             Pause();
-        //         } else {
-        //             Unpause();
-        //         }
-        //     }
-        // }
+        /* private void Update() {
+            if (GameController.instance.MenuOpenCloseInput) {
+                if (!isPaused) {
+                    Pause();
+                } else {
+                    Unpause();
+                }
+            }
+        } */
         
         public void BlacksmithMenu(InputAction.CallbackContext context) {
             if (context.started && MasterRoomController.instance.blacksmithInteract) {

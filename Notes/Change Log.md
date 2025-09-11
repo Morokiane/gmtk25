@@ -1,3 +1,7 @@
+#### 10.09.25
+- Added half / full heart healing
+- Fixed heart empty graphic to be more clear
+---
 #### 09.09.25
 - Health & Key buttons working
 - Key HUD element added

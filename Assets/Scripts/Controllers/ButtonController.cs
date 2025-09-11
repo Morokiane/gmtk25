@@ -3,9 +3,19 @@ using UnityEngine;
 namespace Controllers {
     public class ButtonController : MonoBehaviour {
 
-        public void Heart() {
-            if (Player.Player.instance.maxHealth < Player.Player.instance.health && GameController.instance.totalCoins >= GameController.instance.hpPotCost) {
+        public void HalfHeart() {
+            if (Player.Player.instance.health < Player.Player.instance.maxHealth && GameController.instance.totalCoins >= GameController.instance.halfHeartCost) {
                 Player.Player.instance.health += 1;
+                GameController.instance.totalCoins -= GameController.instance.halfHeartCost;
+                HUDController.instance.UpdateHUD(Player.Player.instance.health);
+            }
+        }
+
+        public void FullHeart() {
+            if (Player.Player.instance.health < (Player.Player.instance.maxHealth - 1) && GameController.instance.totalCoins >= GameController.instance.fullHeartCost) {
+                Player.Player.instance.health += 2;
+                GameController.instance.totalCoins -= GameController.instance.fullHeartCost;
+                HUDController.instance.UpdateHUD(Player.Player.instance.health);
             }
         }
 

@@ -27,8 +27,9 @@ namespace Controllers {
         public float stunDuration;
 
         [Header("Item Costs")]
-        public uint hpPotCost = 5;
-        public uint keyCost = 10;
+        public uint halfHeartCost = 5;
+        public uint fullHeartCost = 10;
+        public uint keyCost = 8;
 
         private int lastRoomIndex = -1;
         private PlayerInput playerInput;
