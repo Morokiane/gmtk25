@@ -48,6 +48,7 @@ namespace Controllers {
             playerInput = GetComponent<PlayerInput>();
             // menuOpenCloseAction = playerInput.actions["Interact"];
 
+            chestKeys = 1;
             // playerDamage = 1;
             // coinsToOpen = 5;
             // coinsCollected = 5;

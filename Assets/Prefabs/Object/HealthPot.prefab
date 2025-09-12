@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8485212319123232687}
   - component: {fileID: 4845923660052994936}
+  - component: {fileID: 233629188495652808}
   - component: {fileID: 2818078749896924754}
   - component: {fileID: 8557958793955928789}
+  - component: {fileID: 7542078914896721655}
   m_Layer: 8
   m_Name: HealthPot
   m_TagString: Collectible
@@ -47,6 +49,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 1
+--- !u!114 &233629188495652808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217034984937698697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3174f366302744fc8c511147c27b770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.Bounce
+  upForce: 5
+  hForce: 1
+  gravityScale: 1
+  minFallTime: 0.3
+  maxFallTime: 1
+  bounceHeight: 0.2
+  bounceDuration: 0.1
 --- !u!212 &2818078749896924754
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -141,3 +162,30 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
+--- !u!50 &7542078914896721655
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217034984937698697}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -77,7 +77,7 @@ namespace Enemies {
                 }
             }
         }
-        
+
         // Called from animator
         public void RemoveEnemy() {
             if (needToCount) {

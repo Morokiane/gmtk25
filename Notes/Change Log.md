@@ -1,3 +1,8 @@
+#### 10.10.25
+- Chests require keys to open
+- Loot now explodes out
+- Setup random chest graphics
+---
 #### 10.09.25
 - Added half / full heart healing
 - Fixed heart empty graphic to be more clear

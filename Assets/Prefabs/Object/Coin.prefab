@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7773418892417718643}
   - component: {fileID: 69320997435682876}
+  - component: {fileID: 6860980705994373988}
   - component: {fileID: 6704410154156843973}
   - component: {fileID: 7880897145747102506}
   - component: {fileID: 641864223708418703}
+  - component: {fileID: 1075631222248839573}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -47,6 +49,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb99895eb914c43b471f7b07c2e3641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6860980705994373988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972475682811690776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3174f366302744fc8c511147c27b770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.Bounce
+  upForce: 5
+  hForce: 1
+  gravityScale: 1
+  minFallTime: 0.3
+  maxFallTime: 1
+  bounceHeight: 0.2
+  bounceDuration: 0.1
 --- !u!212 &6704410154156843973
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -163,3 +184,30 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25691214
+--- !u!50 &1075631222248839573
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5972475682811690776}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
