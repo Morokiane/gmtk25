@@ -1,0 +1,42 @@
+theme = "modus_vivendi_tinted"
+
+[editor]
+color-modes = true
+popup-border = "popup"
+bufferline = "always"
+rulers = []
+# auto-save = true
+
+[editor.indent-guides]
+render = true
+character = "▏" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.statusline]
+left = ["mode", "diagnostics"]
+right = ["position","version-control", "file-encoding", "file-line-ending", "file-type", "spinner"]
+center = ["selections"]
+separator = "│"
+mode.normal = "NOR"
+mode.insert = "INS"
+mode.select = "SEL"
+diagnostics = ["warning", "error"]
+workspace-diagnostics = ["warning", "error"]
+
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+# space = "·"
+# nbsp = "⍽"
+# nnbsp = "␣"
+# tab = "→"
+# newline = "⏎"
+# tabpad = " " # Tabs will look like "→   " (depending on tab width)
+
+[editor.gutters]
+layout = ["diff", "diagnostics", "line-numbers", "spacer"]
